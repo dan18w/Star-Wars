@@ -420,6 +420,51 @@
       .intro h2 { font-size: 1.3rem; }
       .result-title { font-size: 1.5rem; }
     }
+
+    /* ===== LANGUAGE OVERLAY ===== */
+    #lang-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 120;
+      background: rgba(5,7,15,0.88);
+      backdrop-filter: blur(4px);
+      justify-content: center;
+      align-items: center;
+    }
+    #lang-overlay.active { display:flex; }
+
+    .lang-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 22px;
+      border-radius: 12px;
+      text-align: center;
+      max-width: 420px;
+      width: 90%;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+    }
+    .lang-card h3 {
+      font-family: 'Cinzel', serif;
+      color: var(--gold);
+      margin: 0 0 10px;
+      letter-spacing: 1px;
+    }
+    .lang-card p { color: rgba(234,234,234,0.85); margin-bottom: 16px; }
+    .lang-options { display:flex; gap:12px; justify-content:center; }
+    .lang-btn {
+      flex: 1;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.04);
+      color: #eaeaea;
+      cursor: pointer;
+      font-family: 'Cinzel', serif;
+      font-size: 0.95rem;
+      transition: transform 0.18s ease, border-color 0.18s ease;
+    }
+    .lang-btn:hover { transform: translateY(-4px); border-color: var(--gold); }
   </style>
 </head>
 
@@ -478,126 +523,45 @@
 
 <script>
   // ============================================================
-  // PLANTILLA DE PREGUNTAS
-  // Cada objeto tiene:
-  //   question : string  → texto de la pregunta
-  //   answers  : array de objetos con:
-  //       text   : string  → texto de la opción
-  //       points : number  → positivo = Jedi | negativo = Sith
+  // PREGUNTAS (ES / EN)
+  // Mantengo la misma estructura para ambos idiomas.
   // ============================================================
-  const QUESTIONS = [
-    {
-      question: "Un aldeano inocente está en peligro. ¿Qué haces?",
-      answers: [
-        { text: "Lo protejo sin importar el costo personal.",                points:  2 },
-        { text: "Lo ayudo, pero evalúo primero el riesgo.",                  points:  1 },
-        { text: "Solo actúo si me beneficia de alguna forma.",               points: -1 },
-        { text: "Su debilidad no es mi problema.",                           points: -2 },
-      ]
-    },
-    {
-      question: "Un enemigo caído te suplica misericordia. ¿Qué decides?",
-      answers: [
-        { text: "Lo perdono y le ofrezco una segunda oportunidad.",          points:  2 },
-        { text: "Lo dejo ir, pero lo vigilo.",                               points:  1 },
-        { text: "Lo detengo pero no lo mato… por ahora.",                   points: -1 },
-        { text: "La misericordia es una debilidad. Lo elimino.",             points: -2 },
-      ]
-    },
-    {
-      question: "Tienes acceso al poder suficiente para gobernar la galaxia. ¿Qué haces?",
-      answers: [
-        { text: "Renuncio a él. El poder corrompe.",                         points:  2 },
-        { text: "Lo uso para establecer paz duradera.",                      points:  1 },
-        { text: "Lo uso para proteger a los que me importan.",               points: -1 },
-        { text: "Lo tomo. La galaxia necesita un líder fuerte: yo.",         points: -2 },
-      ]
-    },
-    {
-      question: "Tu maestro te da una orden con la que no estás de acuerdo. ¿Cuál es tu reacción?",
-      answers: [
-        { text: "La sigo y luego lo debato con respeto.",                    points:  2 },
-        { text: "Pido explicación antes de obedecer.",                       points:  1 },
-        { text: "La cuestiono abiertamente y actúo a mi manera.",            points: -1 },
-        { text: "Nadie me da órdenes. Lo supero y tomo el control.",         points: -2 },
-      ]
-    },
-    {
-      question: "¿Cómo defines la paz?",
-      answers: [
-        { text: "Armonía entre todos los seres de la galaxia.",              points:  2 },
-        { text: "Ausencia de conflicto innecesario.",                        points:  1 },
-        { text: "Orden impuesto por quienes tienen la razón.",               points: -1 },
-        { text: "La paz es ilusión. Solo el poder es real.",                 points: -2 },
-      ]
-    },
-    {
-      question: "Un amigo traiciona tu confianza por ambición. ¿Cómo reaccionas?",
-      answers: [
-        { text: "Intento entender sus razones y lo perdono.",                points:  2 },
-        { text: "Me alejo con tristeza, pero sin rencor.",                   points:  1 },
-        { text: "Lo confronto y exijo explicaciones.",                       points: -1 },
-        { text: "La traición merece consecuencias. No hay piedad.",          points: -2 },
-      ]
-    },
-    {
-      question: "Sientes una emoción intensa: ira, miedo, dolor. ¿Qué haces con ella?",
-      answers: [
-        { text: "La reconozco y la dejo pasar con serenidad.",               points:  2 },
-        { text: "La proceso lentamente y aprendo de ella.",                  points:  1 },
-        { text: "La uso como combustible para actuar.",                      points: -1 },
-        { text: "Me entrego a ella. Me da fuerza.",                          points: -2 },
-      ]
-    },
-    {
-      question: "¿Qué representa la Fuerza para ti?",
-      answers: [
-        { text: "Una energía que une a todos los seres vivos.",              points:  2 },
-        { text: "Un don que implica responsabilidad.",                       points:  1 },
-        { text: "Una herramienta para alcanzar mis metas.",                  points: -1 },
-        { text: "Un arma que los débiles no merecen.",                       points: -2 },
-      ]
-    },
-    {
-      question: "¿Cuál es tu opinión sobre el sacrificio personal?",
-      answers: [
-        { text: "Es el mayor acto de honor que existe.",                     points:  2 },
-        { text: "Vale la pena si protege algo importante.",                  points:  1 },
-        { text: "Solo me sacrifico si no hay otra opción.",                  points: -1 },
-        { text: "El sacrificio es para los perdedores.",                     points: -2 },
-      ]
-    },
-    {
-      question: "Al final de tu camino, ¿cómo quieres ser recordado?",
-      answers: [
-        { text: "Como alguien que protegió la vida y la esperanza.",         points:  2 },
-        { text: "Como alguien que hizo lo correcto cuando importaba.",       points:  1 },
-        { text: "Como alguien que nunca fue derrotado.",                     points: -1 },
-        { text: "El miedo es un legado suficiente.",                         points: -2 },
-      ]
-    },
+  const QUESTIONS_ES = [
+    { question: "Un aldeano inocente está en peligro. ¿Qué haces?", answers: [ { text: "Lo protejo sin importar el costo personal.", points:2 }, { text: "Lo ayudo, pero evalúo primero el riesgo.", points:1 }, { text: "Solo actúo si me beneficia de alguna forma.", points:-1 }, { text: "Su debilidad no es mi problema.", points:-2 } ] },
+    { question: "Un enemigo caído te suplica misericordia. ¿Qué decides?", answers: [ { text: "Lo perdono y le ofrezco una segunda oportunidad.", points:2 }, { text: "Lo dejo ir, pero lo vigilo.", points:1 }, { text: "Lo detengo pero no lo mato… por ahora.", points:-1 }, { text: "La misericordia es una debilidad. Lo elimino.", points:-2 } ] },
+    { question: "Tienes acceso al poder suficiente para gobernar la galaxia. ¿Qué haces?", answers: [ { text: "Renuncio a él. El poder corrompe.", points:2 }, { text: "Lo uso para establecer paz duradera.", points:1 }, { text: "Lo uso para proteger a los que me importan.", points:-1 }, { text: "Lo tomo. La galaxia necesita un líder fuerte: yo.", points:-2 } ] },
+    { question: "Tu maestro te da una orden con la que no estás de acuerdo. ¿Cuál es tu reacción?", answers: [ { text: "La sigo y luego lo debato con respeto.", points:2 }, { text: "Pido explicación antes de obedecer.", points:1 }, { text: "La cuestiono abiertamente y actúo a mi manera.", points:-1 }, { text: "Nadie me da órdenes. Lo supero y tomo el control.", points:-2 } ] },
+    { question: "¿Cómo defines la paz?", answers: [ { text: "Armonía entre todos los seres de la galaxia.", points:2 }, { text: "Ausencia de conflicto innecesario.", points:1 }, { text: "Orden impuesto por quienes tienen la razón.", points:-1 }, { text: "La paz es ilusión. Solo el poder es real.", points:-2 } ] },
+    { question: "Un amigo traiciona tu confianza por ambición. ¿Cómo reaccionas?", answers: [ { text: "Intento entender sus razones y lo perdono.", points:2 }, { text: "Me alejo con tristeza, pero sin rencor.", points:1 }, { text: "Lo confronto y exijo explicaciones.", points:-1 }, { text: "La traición merece consecuencias. No hay piedad.", points:-2 } ] },
+    { question: "Sientes una emoción intensa: ira, miedo, dolor. ¿Qué haces con ella?", answers: [ { text: "La reconozco y la dejo pasar con serenidad.", points:2 }, { text: "La proceso lentamente y aprendo de ella.", points:1 }, { text: "La uso como combustible para actuar.", points:-1 }, { text: "Me entrego a ella. Me da fuerza.", points:-2 } ] },
+    { question: "¿Qué representa la Fuerza para ti?", answers: [ { text: "Una energía que une a todos los seres vivos.", points:2 }, { text: "Un don que implica responsabilidad.", points:1 }, { text: "Una herramienta para alcanzar mis metas.", points:-1 }, { text: "Un arma que los débiles no merecen.", points:-2 } ] },
+    { question: "¿Cuál es tu opinión sobre el sacrificio personal?", answers: [ { text: "Es el mayor acto de honor que existe.", points:2 }, { text: "Vale la pena si protege algo importante.", points:1 }, { text: "Solo me sacrifico si no hay otra opción.", points:-1 }, { text: "El sacrificio es para los perdedores.", points:-2 } ] },
+    { question: "Al final de tu camino, ¿cómo quieres ser recordado?", answers: [ { text: "Como alguien que protegió la vida y la esperanza.", points:2 }, { text: "Como alguien que hizo lo correcto cuando importaba.", points:1 }, { text: "Como alguien que nunca fue derrotado.", points:-1 }, { text: "El miedo es un legado suficiente.", points:-2 } ] }
+  ];
 
-    // ============================================================
-    // AGREGA MÁS PREGUNTAS AQUÍ con el mismo formato:
-    // {
-    //   question: "Tu pregunta aquí",
-    //   answers: [
-    //     { text: "Opción Jedi fuerte",    points:  2 },
-    //     { text: "Opción Jedi leve",      points:  1 },
-    //     { text: "Opción Sith leve",      points: -1 },
-    //     { text: "Opción Sith fuerte",    points: -2 },
-    //   ]
-    // },
-    // ============================================================
+  const QUESTIONS_EN = [
+    { question: "An innocent villager is in danger. What do you do?", answers: [ { text: "I protect them no matter the personal cost.", points:2 }, { text: "I help, but first assess the risk.", points:1 }, { text: "I act only if it benefits me.", points:-1 }, { text: "Their weakness is not my problem.", points:-2 } ] },
+    { question: "A fallen enemy begs for mercy. What do you decide?", answers: [ { text: "I forgive them and offer a second chance.", points:2 }, { text: "I let them go, but I watch them.", points:1 }, { text: "I detain them but don't kill... for now.", points:-1 }, { text: "Mercy is weakness. I eliminate them.", points:-2 } ] },
+    { question: "You have the power to rule the galaxy. What do you do?", answers: [ { text: "I renounce it. Power corrupts.", points:2 }, { text: "I use it to establish lasting peace.", points:1 }, { text: "I use it to protect those I care about.", points:-1 }, { text: "I take it. The galaxy needs a strong leader: me.", points:-2 } ] },
+    { question: "Your master gives an order you disagree with. How do you react?", answers: [ { text: "I follow it and discuss it respectfully later.", points:2 }, { text: "I ask for an explanation before obeying.", points:1 }, { text: "I openly question it and act my way.", points:-1 }, { text: "No one orders me. I overtake and take control.", points:-2 } ] },
+    { question: "How do you define peace?", answers: [ { text: "Harmony among all beings in the galaxy.", points:2 }, { text: "Absence of unnecessary conflict.", points:1 }, { text: "Order imposed by those who are right.", points:-1 }, { text: "Peace is an illusion. Only power is real.", points:-2 } ] },
+    { question: "A friend betrays your trust for ambition. How do you react?", answers: [ { text: "I try to understand and forgive them.", points:2 }, { text: "I step away sadly but without bitterness.", points:1 }, { text: "I confront them and demand explanations.", points:-1 }, { text: "Betrayal deserves consequences. No mercy.", points:-2 } ] },
+    { question: "You feel intense emotion: anger, fear, pain. What do you do with it?", answers: [ { text: "I acknowledge it and let it pass calmly.", points:2 }, { text: "I process it slowly and learn from it.", points:1 }, { text: "I use it as fuel to act.", points:-1 }, { text: "I give into it. It gives me power.", points:-2 } ] },
+    { question: "What does the Force represent to you?", answers: [ { text: "An energy that binds all living things.", points:2 }, { text: "A gift that implies responsibility.", points:1 }, { text: "A tool to achieve my goals.", points:-1 }, { text: "A weapon unfit for the weak.", points:-2 } ] },
+    { question: "What is your view on personal sacrifice?", answers: [ { text: "It is the highest act of honor.", points:2 }, { text: "It's worth it if it protects something important.", points:1 }, { text: "I only sacrifice if there is no other option.", points:-1 }, { text: "Sacrifice is for losers.", points:-2 } ] },
+    { question: "At the end of your path, how do you want to be remembered?", answers: [ { text: "As someone who protected life and hope.", points:2 }, { text: "As someone who did right when it mattered.", points:1 }, { text: "As someone who was never defeated.", points:-1 }, { text: "Fear is legacy enough.", points:-2 } ] }
   ];
 
   // ============================================================
   // LÓGICA DEL QUIZ
+  // Se cargará una vez el usuario elija idioma.
   // ============================================================
   let currentQ  = 0;
   let jediScore = 0;
   let sithScore = 0;
-  const total   = QUESTIONS.length;
+  let LANG = 'es';
+  let QUESTIONS = QUESTIONS_ES;
+  let total = QUESTIONS.length;
 
   const questionEl    = document.getElementById('question');
   const answersEl     = document.getElementById('answers');
@@ -609,6 +573,121 @@
   const quizSection   = document.getElementById('quiz-section');
   const resultSection = document.getElementById('result-section');
 
+  // language overlay elements
+  const langOverlay = document.createElement('div');
+  langOverlay.id = 'lang-overlay';
+  langOverlay.innerHTML = `
+    <div class="lang-card">
+      <h3>Selecciona idioma / Choose language</h3>
+      <p>Selecciona el idioma para el quiz · Select the language for the quiz</p>
+      <div class="lang-options">
+        <button class="lang-btn" id="lang-es">🇪🇸 Español</button>
+        <button class="lang-btn" id="lang-en">🇺🇸 English</button>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(langOverlay);
+
+  const langBtnES = document.getElementById('lang-es');
+  const langBtnEN = document.getElementById('lang-en');
+
+  // (LANG, QUESTIONS and total already declared above)
+
+  const TRANSLATIONS = {
+    es: {
+      header: 'Holocron Galáctico – Quiz',
+      introTitle: '¿Jedi o Sith?',
+      introDesc: 'Responde con honestidad. La Fuerza ya sabe lo que eres — este quiz solo te lo confirma.',
+      questionLabel: (i, t) => `PREGUNTA ${i} DE ${t}`,
+      qNumber: i => `PREGUNTA ${i}`,
+      jediLabel: '⚪ JEDI',
+      sithLabel: '🔴 SITH',
+      restart: '↺ INTENTAR DE NUEVO',
+      saberSkip: 'CONTINUAR →',
+      saber_label_jedi: 'QUE LA FUERZA TE ACOMPAÑE',
+      saber_label_sith: 'LA OSCURIDAD TE RECLAMA',
+      saber_label_neutral: 'EL EQUILIBRIO ERES TÚ',
+      result: {
+        guardian_title: 'GUARDIÁN JEDI',
+        guardian_desc: 'La Fuerza fluye en ti con claridad y propósito. Tu paciencia, compasión y desapego del poder te elevan como verdadero guardián de la galaxia. El Consejo Jedi te recibirá con los brazos abiertos.',
+        committed_title: 'JEDI COMPROMETIDO',
+        committed_desc: 'Caminas en la Luz, aunque la oscuridad te ronda. Tus valores son sólidos pero las tentaciones no te son ajenas. Sigue tu entrenamiento y la sombra no te alcanzará.',
+        lord_title: 'SEÑOR SITH',
+        lord_desc: 'La oscuridad te consume y la abrazas sin reservas. Tu sed de poder y tu desprecio por la debilidad te convierten en una amenaza para toda la galaxia. La República tiembla ante tu presencia.',
+        apprentice_title: 'APRENDIZ SITH',
+        apprentice_desc: 'El lado oscuro te seduce y ya has cedido varias veces a él. Tu ambición supera tu templanza. Un Maestro Sith te encontraría un aprendiz prometedor… y peligroso.',
+        neutral_title: 'EQUILIBRIO EN LA FUERZA',
+        neutral_desc: 'Ni completamente Jedi ni completamente Sith. Eres el punto de equilibrio que las profecías predicen. Pocos logran caminar esta línea sin caer. La galaxia entera depende de tu elección final.'
+      }
+    },
+    en: {
+      header: 'Galactic Holocron – Quiz',
+      introTitle: 'Jedi or Sith?',
+      introDesc: 'Answer honestly. The Force already knows who you are — this quiz only confirms it.',
+      questionLabel: (i, t) => `QUESTION ${i} OF ${t}`,
+      qNumber: i => `QUESTION ${i}`,
+      jediLabel: '⚪ JEDI',
+      sithLabel: '🔴 SITH',
+      restart: '↺ TRY AGAIN',
+      saberSkip: 'CONTINUE →',
+      saber_label_jedi: 'MAY THE FORCE BE WITH YOU',
+      saber_label_sith: 'THE DARKNESS CALLS YOU',
+      saber_label_neutral: 'BALANCE IS YOU',
+      result: {
+        guardian_title: 'JEDI GUARDIAN',
+        guardian_desc: 'The Force flows through you with clarity and purpose. Your patience, compassion and lack of lust for power mark you as a true guardian of the galaxy. The Jedi Council would welcome you.',
+        committed_title: 'COMMITTED JEDI',
+        committed_desc: 'You walk in the Light, though darkness tempts you. Your values are strong but temptations reach you. Continue your training and the shadow will not catch you.',
+        lord_title: 'SITH LORD',
+        lord_desc: 'Darkness consumes you and you embrace it without reservation. Your thirst for power and contempt for weakness make you a threat to the galaxy. The Republic trembles at your presence.',
+        apprentice_title: 'SITH APPRENTICE',
+        apprentice_desc: 'The dark side seduces you and you have given into it several times. Your ambition outweighs your temperance. A Sith Master would find a promising… and dangerous apprentice in you.',
+        neutral_title: 'BALANCE IN THE FORCE',
+        neutral_desc: 'Neither fully Jedi nor fully Sith. You are the point of balance the prophecies speak of. Few walk this line without falling. The whole galaxy depends on your final choice.'
+      }
+    }
+  };
+
+  function applyLanguage(lang) {
+    LANG = lang;
+    QUESTIONS = (lang === 'en') ? QUESTIONS_EN : QUESTIONS_ES;
+    total = QUESTIONS.length;
+
+    document.querySelector('header h1').textContent = TRANSLATIONS[lang].header;
+    document.querySelector('.intro h2').textContent = TRANSLATIONS[lang].introTitle;
+    document.querySelector('.intro p').textContent = TRANSLATIONS[lang].introDesc;
+    document.getElementById('restart').textContent = TRANSLATIONS[lang].restart;
+    document.getElementById('saber-skip').textContent = TRANSLATIONS[lang].saberSkip;
+    // side labels
+    document.querySelector('.side-bar.jedi').childNodes[0].nodeValue = TRANSLATIONS[lang].jediLabel + '\n';
+    document.querySelector('.side-bar.sith').childNodes[0].nodeValue = TRANSLATIONS[lang].sithLabel + '\n';
+
+    // reload first question in selected language
+    currentQ = 0;
+    jediScore = 0;
+    sithScore = 0;
+    jediBar.style.width = '0%';
+    sithBar.style.width = '0%';
+    // hide result if visible
+    resultSection.style.display = 'none';
+    quizSection.style.display = 'block';
+    loadQuestion();
+  }
+
+  // show overlay on load
+  function showLangOverlay() {
+    langOverlay.classList.add('active');
+  }
+
+  langBtnES.addEventListener('click', () => {
+    langOverlay.classList.remove('active');
+    applyLanguage('es');
+  });
+  langBtnEN.addEventListener('click', () => {
+    langOverlay.classList.remove('active');
+    applyLanguage('en');
+  });
+
   function shuffle(arr) {
     return arr.slice().sort(() => Math.random() - 0.5);
   }
@@ -616,8 +695,8 @@
   function loadQuestion() {
     const q = QUESTIONS[currentQ];
     questionEl.textContent = q.question;
-    qNumberEl.textContent  = `PREGUNTA ${currentQ + 1}`;
-    progressLabel.textContent = `PREGUNTA ${currentQ + 1} DE ${total}`;
+    qNumberEl.textContent  = TRANSLATIONS[LANG].qNumber(currentQ + 1);
+    progressLabel.textContent = TRANSLATIONS[LANG].questionLabel(currentQ + 1, total);
     progressFill.style.width  = `${(currentQ / total) * 100}%`;
 
     answersEl.innerHTML = '';
@@ -675,15 +754,15 @@
     blade.className = 'saber-blade';
     if (side === 'jedi') {
       blade.classList.add('jedi-blade');
-      label.textContent = 'QUE LA FUERZA TE ACOMPAÑE';
+      label.textContent = TRANSLATIONS[LANG].saber_label_jedi;
       label.style.color = '#00e676';
     } else if (side === 'sith') {
       blade.classList.add('sith-blade');
-      label.textContent = 'LA OSCURIDAD TE RECLAMA';
+      label.textContent = TRANSLATIONS[LANG].saber_label_sith;
       label.style.color = '#f44336';
     } else {
       blade.classList.add('neutral-blade');
-      label.textContent = 'EL EQUILIBRIO ERES TÚ';
+      label.textContent = TRANSLATIONS[LANG].saber_label_neutral;
       label.style.color = '#ffe81f';
     }
 
@@ -744,29 +823,29 @@
 
       if (diff > 4) {
         iconEl.textContent  = '🔵';
-        titleEl.textContent = 'GUARDIÁN JEDI';
+        titleEl.textContent = TRANSLATIONS[LANG].result.guardian_title;
         titleEl.className   = 'result-title jedi';
-        descEl.textContent  = 'La Fuerza fluye en ti con claridad y propósito. Tu paciencia, compasión y desapego del poder te elevan como verdadero guardián de la galaxia. El Consejo Jedi te recibirá con los brazos abiertos.';
+        descEl.textContent  = TRANSLATIONS[LANG].result.guardian_desc;
       } else if (diff > 1) {
         iconEl.textContent  = '🔵';
-        titleEl.textContent = 'JEDI COMPROMETIDO';
+        titleEl.textContent = TRANSLATIONS[LANG].result.committed_title;
         titleEl.className   = 'result-title jedi';
-        descEl.textContent  = 'Caminas en la Luz, aunque la oscuridad te ronda. Tus valores son sólidos pero las tentaciones no te son ajenas. Sigue tu entrenamiento y la sombra no te alcanzará.';
+        descEl.textContent  = TRANSLATIONS[LANG].result.committed_desc;
       } else if (diff < -4) {
         iconEl.textContent  = '🔴';
-        titleEl.textContent = 'SEÑOR SITH';
+        titleEl.textContent = TRANSLATIONS[LANG].result.lord_title;
         titleEl.className   = 'result-title sith';
-        descEl.textContent  = 'La oscuridad te consume y la abrazas sin reservas. Tu sed de poder y tu desprecio por la debilidad te convierten en una amenaza para toda la galaxia. La República tiembla ante tu presencia.';
+        descEl.textContent  = TRANSLATIONS[LANG].result.lord_desc;
       } else if (diff < -1) {
         iconEl.textContent  = '🔴';
-        titleEl.textContent = 'APRENDIZ SITH';
+        titleEl.textContent = TRANSLATIONS[LANG].result.apprentice_title;
         titleEl.className   = 'result-title sith';
-        descEl.textContent  = 'El lado oscuro te seduce y ya has cedido varias veces a él. Tu ambición supera tu templanza. Un Maestro Sith te encontraría un aprendiz prometedor… y peligroso.';
+        descEl.textContent  = TRANSLATIONS[LANG].result.apprentice_desc;
       } else {
         iconEl.textContent  = '⚫';
-        titleEl.textContent = 'EQUILIBRIO EN LA FUERZA';
+        titleEl.textContent = TRANSLATIONS[LANG].result.neutral_title;
         titleEl.className   = 'result-title neutral';
-        descEl.textContent  = 'Ni completamente Jedi ni completamente Sith. Eres el punto de equilibrio que las profecías predicen. Pocos logran caminar esta línea sin caer. La galaxia entera depende de tu elección final.';
+        descEl.textContent  = TRANSLATIONS[LANG].result.neutral_desc;
       }
     });
   }
@@ -783,7 +862,7 @@
   });
 
   // Iniciar
-  loadQuestion();
+  showLangOverlay();
 </script>
 
 <!-- ===== SABER OVERLAY ===== -->
