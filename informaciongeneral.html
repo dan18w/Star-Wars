@@ -1,9 +1,9 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Star Wars - Holocron</title>
+  <title>Información General - Star Wars</title>
 
   <link rel="icon" type="image/png" href="https://loodibee.com/wp-content/uploads/Star-Wars-transparent-logo-1024x1024.png">
 
@@ -16,7 +16,6 @@
       overflow-x: hidden;
     }
 
-    /* Fondo estrellas simple */
     body::before {
       content: "";
       position: fixed;
@@ -41,51 +40,49 @@
     }
 
     .logo {
-      width: 200px;
+      width: 180px;
       margin-bottom: 10px;
     }
 
     h1 {
-      font-size: 32px;
-      margin-bottom: 40px;
-      letter-spacing: 2px;
       color: #ffe81f;
+      font-size: 30px;
+      margin-bottom: 30px;
+      letter-spacing: 2px;
     }
 
     .menu {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
       max-width: 900px;
       margin: auto;
     }
 
     .card {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.2);
-      padding: 25px;
-      border-radius: 12px;
+      display: block;
       text-decoration: none;
       color: white;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 20px;
+      border-radius: 12px;
       transition: 0.3s;
       backdrop-filter: blur(6px);
+      font-size: 18px;
     }
 
     .card:hover {
       transform: scale(1.05);
       border-color: #ffe81f;
-      box-shadow: 0 0 20px #ffe81f44;
+      box-shadow: 0 0 20px #ffe81f33;
     }
 
-    .title {
-      font-size: 20px;
-      margin-bottom: 10px;
+    .back {
+      display: inline-block;
+      margin-bottom: 25px;
       color: #ffe81f;
-    }
-
-    .desc {
-      font-size: 14px;
-      opacity: 0.8;
+      text-decoration: none;
     }
   </style>
 </head>
@@ -94,31 +91,32 @@
 
 <div class="container">
 
-  <img class="logo" src="https://loodibee.com/wp-content/uploads/Star-Wars-transparent-logo-1024x1024.png">
+  <!-- LOGO COMO NAVEGACIÓN PRINCIPAL -->
+  <a href="index.html">
+    <img 
+      class="logo"
+      src="https://loodibee.com/wp-content/uploads/Star-Wars-transparent-logo-1024x1024.png"
+      alt="Inicio"
+    >
+  </a>
 
-  <h1>Holocron Galáctico</h1>
+  <h1>🏛️ Información General</h1>
 
   <div class="menu">
 
-    <a class="card" href="lineadetiempo.html">
-      <div class="title">📜 Línea del tiempo</div>
-      <div class="desc">Orden cronológico de toda la saga galáctica</div>
-    </a>
+    <a class="card" href="Imperio Galactico.html">🏛️ Imperio Galáctico</a>
 
-    <a class="card" href="informaciongeneral.html">
-      <div class="title">🏛️ Información general</div>
-      <div class="desc">República, Imperio, Sith y estructuras del universo</div>
-    </a>
+    <a class="card" href="Republica Galactica.html">🏛️ República Galáctica</a>
 
-    <a class="card" href="razas.html">
-      <div class="title">👥 Razas</div>
-      <div class="desc">Especies y civilizaciones de toda la galaxia</div>
-    </a>
+    <a class="card" href="Mandalore.html">⚔️ Mandalore</a>
 
-    <a class="card" href="planetas.html">
-      <div class="title">🌍 Planetas</div>
-      <div class="desc">Mundos importantes del universo Star Wars</div>
-    </a>
+    <a class="card" href="Alianza Rebelde.html">🔥 Alianza Rebelde</a>
+
+    <a class="card" href="Nueva Republica.html">🟢 Nueva República</a>
+
+    <a class="card" href="Orden Jedi.html">🧘 Orden Jedi</a>
+
+    <a class="card" href="Sith.html">⚡ Sith</a>
 
   </div>
 

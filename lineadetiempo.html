@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<title>Timeline Star Wars</title>
+
+<style>
+body{
+  margin:0;
+  font-family: Arial, sans-serif;
+  background: radial-gradient(circle at top, #0b0f1a, #000);
+  color:white;
+}
+
+/* HEADER */
+header{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  padding:12px 20px;
+  border-bottom:1px solid #333;
+  background:#05070f;
+  position:sticky;
+  top:0;
+}
+
+header img{
+  width:70px;
+}
+
+header h1{
+  font-size:20px;
+  color:#ffe81f;
+  margin:0;
+}
+
+/* CONTAINER */
+.container{
+  max-width:900px;
+  margin:auto;
+  padding:20px;
+}
+
+/* ERA TITLE */
+.era{
+  margin-top:30px;
+}
+
+.era h2{
+  font-size:18px;
+  margin-bottom:10px;
+  padding-left:10px;
+  border-left:4px solid #ffe81f;
+  color:#ffe81f;
+}
+
+/* TIMELINE LIST */
+.timeline{
+  list-style:none;
+  padding-left:20px;
+  border-left:2px solid rgba(255, 232, 31, 0.5);
+}
+
+.timeline li{
+  position:relative;
+  padding:10px 10px 10px 25px;
+  margin:8px 0;
+  background:rgba(255,255,255,0.05);
+  border-radius:8px;
+  border:1px solid rgba(255,255,255,0.08);
+  color:#ddd;
+  font-size:14px;
+}
+
+/* PELLOTITA */
+.timeline li::before{
+  content:"";
+  position:absolute;
+  left:-7px;
+  top:15px;
+  width:10px;
+  height:10px;
+  background:#ffe81f;
+  border-radius:50%;
+}
+
+/* COLORS OPTIONAL */
+.blue{color:#4da6ff;}
+.green{color:#4dff88;}
+.red{color:#ff4d4d;}
+.orange{color:#ffb347;}
+.purple{color:#c084ff;}
+.pink{color:#ff7aa2;}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<a href="index.html">
+  <img src="https://loodibee.com/wp-content/uploads/Star-Wars-transparent-logo-1024x1024.png">
+</a>
+<h1>Línea de Tiempo Star Wars</h1>
+</header>
+
+<div class="container">
+
+<!-- ALTA REPUBLICA -->
+<div class="era">
+<h2>🟠 Era de la Alta República</h2>
+<ul class="timeline">
+  <li>The Acolyte</li>
+</ul>
+</div>
+
+<!-- CAIDA DE LOS JEDI -->
+<div class="era">
+<h2>🌸 Caída de los Jedi</h2>
+<ul class="timeline">
+  <li>Tales of the Jedi (episodios iniciales)</li>
+  <li>Episodio I – La Amenaza Fantasma</li>
+  <li>Episodio II – El Ataque de los Clones</li>
+  <li>The Clone Wars (película + serie)</li>
+  <li>The Bad Batch</li>
+  <li>Episodio III – La Venganza de los Sith</li>
+</ul>
+</div>
+
+<!-- IMPERIO -->
+<div class="era">
+<h2>🔴 Era del Imperio</h2>
+<ul class="timeline">
+  <li>Solo: A Star Wars Story</li>
+  <li>Obi-Wan Kenobi</li>
+  <li>Andor</li>
+  <li>Rebels</li>
+  <li>Rogue One</li>
+</ul>
+</div>
+
+<!-- REBELION -->
+<div class="era">
+<h2>🟡 Era de la Rebelión</h2>
+<ul class="timeline">
+  <li>Episodio IV – Una Nueva Esperanza</li>
+  <li>Episodio V – El Imperio Contraataca</li>
+  <li>Episodio VI – El Retorno del Jedi</li>
+</ul>
+</div>
+
+<!-- NUEVA REPUBLICA -->
+<div class="era">
+<h2>🔵 Era de la Nueva República</h2>
+<ul class="timeline">
+  <li>The Mandalorian</li>
+  <li>The Book of Boba Fett</li>
+  <li>Ahsoka</li>
+  <li>Skeleton Crew</li>
+</ul>
+</div>
+
+<!-- RESISTENCIA -->
+<div class="era">
+<h2>🟢 Era de la Resistencia</h2>
+<ul class="timeline">
+  <li>Episodio VII – El Despertar de la Fuerza</li>
+  <li>Episodio VIII – Los Últimos Jedi</li>
+  <li>Episodio IX – El Ascenso de Skywalker</li>
+</ul>
+</div>
+
+<!-- FUTURO -->
+<div class="era">
+<h2>🟣 Futuro</h2>
+<ul class="timeline">
+  <li>Starfighter (2027)</li>
+  <li>Trilogía de Rey</li>
+</ul>
+</div>
+
+</div>
+
+</body>
+</html>

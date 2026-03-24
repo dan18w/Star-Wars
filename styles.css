@@ -189,3 +189,31 @@ a:hover {
   text-shadow: 0 0 15px rgba(255, 216, 107, 0.4);
 }
 
+@media (max-width: 600px) {
+  h1 {
+    font-size: 22px;
+  }
+
+  .menu {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    padding: 15px;
+    font-size: 16px;
+  }
+}
+
+header{
+  display:flex;
+  align-items:center;
+  gap:15px;
+  padding:12px 20px;
+  border-bottom:1px solid #333;
+  background:rgba(5, 7, 15, 0.95);
+  position:sticky;
+  top:0;
+  z-index:999;
+  backdrop-filter: blur(6px);
+  box-shadow: 0 2px 15px rgba(0,0,0,0.6);
+}
