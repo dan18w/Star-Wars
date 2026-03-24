@@ -1,0 +1,191 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #eaeaea;
+  background: #05070f;
+  overflow-x: hidden;
+}
+
+/* =========================
+   FONDO ESTRELLADO REALISTA
+========================= */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(1px 1px at 10% 20%, white, transparent),
+    radial-gradient(1px 1px at 30% 80%, white, transparent),
+    radial-gradient(1px 1px at 70% 10%, white, transparent),
+    radial-gradient(1px 1px at 90% 50%, white, transparent),
+    radial-gradient(2px 2px at 40% 60%, white, transparent),
+    radial-gradient(2px 2px at 80% 30%, white, transparent),
+    radial-gradient(1px 1px at 60% 90%, white, transparent);
+  opacity: 0.5;
+  animation: starsMove 80s linear infinite;
+  z-index: 0;
+}
+
+@keyframes starsMove {
+  from { transform: translateY(0); }
+  to { transform: translateY(-1000px); }
+}
+
+/* =========================
+   CONTENEDOR PRINCIPAL
+========================= */
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  margin: auto;
+  padding: 60px 20px;
+}
+
+/* =========================
+   TITULOS
+========================= */
+.title {
+  text-align: center;
+  font-size: 2.8rem;
+  color: #ffd86b;
+  text-shadow: 0 0 25px rgba(255, 200, 80, 0.6);
+  margin-bottom: 10px;
+}
+
+.subtitle {
+  text-align: center;
+  opacity: 0.7;
+  margin-bottom: 40px;
+}
+
+/* =========================
+   SECCIONES
+========================= */
+section {
+  margin-top: 50px;
+}
+
+h2 {
+  border-left: 4px solid #ffd86b;
+  padding-left: 10px;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+/* =========================
+   MENÚ DE ERAS
+========================= */
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 450px;
+  margin: auto;
+}
+
+.menu a {
+  text-decoration: none;
+  color: #eaeaea;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 14px 16px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.25s ease;
+  backdrop-filter: blur(6px);
+}
+
+.menu a:hover {
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+  border-color: rgba(255, 216, 107, 0.5);
+}
+
+/* =========================
+   TIMELINE BOX
+========================= */
+.timeline-box {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 20px;
+  backdrop-filter: blur(8px);
+}
+
+.timeline-box p {
+  opacity: 0.8;
+}
+
+/* =========================
+   LISTAS
+========================= */
+ol {
+  padding-left: 20px;
+}
+
+ul {
+  margin-top: 8px;
+  margin-bottom: 10px;
+}
+
+li {
+  margin: 6px 0;
+}
+
+/* =========================
+   LINKS GENERALES
+========================= */
+a {
+  color: #7ab7ff;
+}
+
+a:hover {
+  color: #ffd86b;
+}
+
+/* =========================
+   PEQUEÑO TOQUE GALÁCTICO
+========================= */
+.timeline-box strong {
+  color: #ffd86b;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 20px;
+  background: rgba(255, 255, 255, 0.04);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.logo {
+  width: 55px;
+  height: 55px;
+  border: none;
+  background: transparent;
+  display: block;
+}
+
+.logo-link {
+  display: inline-block;
+  line-height: 0;
+  text-decoration: none;
+}
+
+.logo-link:focus,
+.logo-link:active {
+  outline: none;
+}
+
+.site-title {
+  font-size: 1.3rem;
+  color: #ffd86b;
+  margin: 0;
+  text-shadow: 0 0 15px rgba(255, 216, 107, 0.4);
+}
+
