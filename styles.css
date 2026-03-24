@@ -131,38 +131,33 @@ header h1 {
 
 @media (max-width: 600px) {
 
-  header img {
-    width: 45px;
+  .title {
+    font-size: 22px;
+    text-align: center;
   }
 
-  header h1 {
+  .site-title {
+    font-size: 14px;
+  }
+
+  .logo {
+    width: 42px;
+  }
+
+  section h2 {
     font-size: 16px;
   }
 
-  .container {
-    padding: 12px;
-  }
-
-  .planet {
+  .timeline-box {
     padding: 14px;
-  }
-
-  .gif-box {
-    width: 100%;
-    max-width: 280px;
-    height: auto;
-    aspect-ratio: 1 / 1;
-  }
-
-  .planet p {
-    font-size: 13px;
-  }
-
-  .planet h2 {
-    font-size: 17px;
   }
 
   ul {
     padding-left: 18px;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
   }
 }
