@@ -128,3 +128,41 @@ header h1 {
     font-size: 0.95rem;
   }
 }
+
+@media (max-width: 600px) {
+
+  header img {
+    width: 45px;
+  }
+
+  header h1 {
+    font-size: 16px;
+  }
+
+  .container {
+    padding: 12px;
+  }
+
+  .planet {
+    padding: 14px;
+  }
+
+  .gif-box {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
+
+  .planet p {
+    font-size: 13px;
+  }
+
+  .planet h2 {
+    font-size: 17px;
+  }
+
+  ul {
+    padding-left: 18px;
+  }
+}

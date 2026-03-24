@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="styles.css">
 <title>Razas - Star Wars</title>
 
 <style>
@@ -12,14 +11,15 @@ body{
   font-family: Arial, sans-serif;
   background: radial-gradient(circle at top, #0b0f1a, #000);
   color:white;
+  overflow-x:hidden;
 }
 
 /* HEADER */
 header{
   display:flex;
   align-items:center;
-  gap:15px;
-  padding:12px 20px;
+  gap:12px;
+  padding:12px 16px;
   border-bottom:1px solid #333;
   background:rgba(5, 7, 15, 0.95);
   position:sticky;
@@ -28,11 +28,11 @@ header{
 }
 
 header img{
-  width:70px;
+  width:55px;
 }
 
 header h1{
-  font-size:20px;
+  font-size:18px;
   color:#ffe81f;
   margin:0;
 }
@@ -41,7 +41,7 @@ header h1{
 .container{
   max-width:1000px;
   margin:auto;
-  padding:20px;
+  padding:16px;
 }
 
 /* CARD */
@@ -50,30 +50,20 @@ header h1{
   border:1px solid rgba(255,255,255,0.1);
   border-radius:10px;
   padding:15px;
-  margin-bottom:20px;
+  margin-bottom:18px;
 }
 
 .race h2{
   margin:0 0 10px 0;
   color:#ffe81f;
+  font-size:18px;
 }
 
-/* IMG BOX */
-.img-box{
-  width:220px;
-  height:220px;
-  margin:10px auto;
-  border:2px dashed #444;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-}
-
-.img-box img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
+/* TAG */
+.tag{
+  font-size:12px;
+  color:#888;
+  margin:0 0 10px 0;
 }
 
 /* TEXT */
@@ -83,11 +73,59 @@ header h1{
   line-height:1.4;
 }
 
-.tag{
-  font-size:12px;
-  color:#888;
+/* IMG BOX */
+.img-box{
+  width:220px;
+  height:220px;
+  margin:12px auto;
+  border:2px dashed #444;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  border-radius:8px;
 }
 
+.img-box img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+/* ===== MOBILE FIX ===== */
+@media (max-width: 600px){
+
+  header img{
+    width:42px;
+  }
+
+  header h1{
+    font-size:15px;
+  }
+
+  .container{
+    padding:12px;
+  }
+
+  .race{
+    padding:12px;
+  }
+
+  .race h2{
+    font-size:16px;
+  }
+
+  .race p{
+    font-size:13px;
+  }
+
+  .img-box{
+    width:100%;
+    max-width:280px;
+    height:auto;
+    aspect-ratio:1/1;
+  }
+}
 </style>
 </head>
 
@@ -102,133 +140,82 @@ header h1{
 
 <div class="container">
 
-<!-- HUMANOS -->
 <div class="race">
 <h2>🧑 Humanos</h2>
-
 <p class="tag">La especie dominante de la galaxia</p>
-
-<p>
-Los humanos son la especie más extendida en la galaxia. Destacan por su versatilidad, ambición y presencia en casi todos los sistemas políticos y militares, incluyendo la República, el Imperio y la Rebelión.
-</p>
-
+<p>Los humanos son la especie más extendida en la galaxia...</p>
 <div class="img-box">
-  <img src="https://lumiere-a.akamaihd.net/v1/images/628cdaa1dbbde50001de0bd3-image_6c311046.jpeg?region=192%2C0%2C1152%2C864" alt="Humanos">
+  <img src="https://lumiere-a.akamaihd.net/v1/images/628cdaa1dbbde50001de0bd3-image_6c311046.jpeg" alt="Humanos">
 </div>
 </div>
 
-<!-- TWI'LEK -->
 <div class="race">
 <h2>🟣 Twi’lek</h2>
-
-<p>
-Especie humanoide reconocida por sus lekku (tentáculos en la cabeza). Son comunes en el crimen organizado, el entretenimiento y también en la política.
-</p>
-
+<p>Especie humanoide reconocida por sus lekku...</p>
 <div class="img-box">
-  <img src="https://lumiere-a.akamaihd.net/v1/images/twi-lek-main_93917d40.jpeg?region=93%2C0%2C951%2C536" alt="Twi'lek">
+  <img src="https://lumiere-a.akamaihd.net/v1/images/twi-lek-main_93917d40.jpeg" alt="Twi'lek">
 </div>
 </div>
 
-<!-- TOGRUTA -->
 <div class="race">
 <h2>🟠 Togruta</h2>
-
-<p>
-Conocidos por sus montrals y lekku blancos con patrones, son cazadores naturales y sensibles a la Fuerza. Ahsoka Tano es la más famosa.
-</p>
-
+<p>Conocidos por sus montrals y lekku...</p>
 <div class="img-box">
-  <img src="https://m.media-amazon.com/images/M/MV5BYmFlMmNhMWUtNzYwMi00OGEyLTllZTMtMzg3NTJlMDVlMGY0XkEyXkFqcGc@._V1_QL75_UY281_CR31,0,500,281_.jpg" alt="Togruta">
+  <img src="https://m.media-amazon.com/images/M/MV5BYmFlMmNhMWUtNzYwMi00OGEyLTllZTMtMzg3NTJlMGY0XkEyXkFqcGc@._V1_.jpg" alt="Togruta">
 </div>
 </div>
 
-<!-- WOOKIEE -->
 <div class="race">
 <h2>🟤 Wookiee</h2>
-
-<p>
-Gigantes peludos del planeta Kashyyyk. Extremadamente fuertes y leales. Su lenguaje es el Shyriiwook.
-</p>
-
+<p>Gigantes peludos del planeta Kashyyyk...</p>
 <div class="img-box">
   <img src="https://static0.gamerantimages.com/wordpress/wp-content/uploads/2022/12/wookies-main.jpeg" alt="Wookiee">
 </div>
 </div>
 
-<!-- ZABRAK -->
 <div class="race">
 <h2>⚫ Zabrak</h2>
-
-<p>
-Reconocibles por sus cuernos y tatuajes faciales. Famosos por su resistencia física y mental.
-</p>
-
+<p>Reconocibles por sus cuernos y tatuajes...</p>
 <div class="img-box">
-  <img src="https://preview.redd.it/how-would-things-be-different-if-darth-maul-was-the-second-v0-0x6yny1r516e1.jpg?width=554&format=pjpg&auto=webp&s=707fa30da4169040f137e7692debe0ae94a366dc" alt="Zabrak">
+  <img src="https://preview.redd.it/how-would-things-be-different-if-darth-maul-was-the-second-v0-0x6yny1r516e1.jpg" alt="Zabrak">
 </div>
 </div>
 
-<!-- HUTT -->
 <div class="race">
 <h2>🟢 Hutt</h2>
-
-<p>
-Criaturas grandes, similares a babosas. Controlan gran parte del crimen organizado en la galaxia.
-</p>
-
+<p>Criaturas grandes similares a babosas...</p>
 <div class="img-box">
-  <img src="https://lumiere-a.akamaihd.net/v1/images/databank_hutt_01_169_5d0535d2.jpeg?region=0%2C0%2C1560%2C878" alt="Hutt">
+  <img src="https://lumiere-a.akamaihd.net/v1/images/databank_hutt_01_169_5d0535d2.jpeg" alt="Hutt">
 </div>
 </div>
 
-<!-- CHISS -->
 <div class="race">
 <h2>🔵 Chiss</h2>
-
-<p>
-Especie humanoide de piel azul y ojos rojos. Altamente inteligentes y estratégicos. Thrawn es el más conocido.
-</p>
-
+<p>Especie humanoide de piel azul...</p>
 <div class="img-box">
-  <img src="https://static0.srcdn.com/wordpress/wp-content/uploads/2020/01/Thrawn.jpeg?w=1200&h=675&fit=crop" alt="Chiss">
+  <img src="https://static0.srcdn.com/wordpress/wp-content/uploads/2020/01/Thrawn.jpeg" alt="Chiss">
 </div>
 </div>
 
-<!-- MANDALORIANOS -->
 <div class="race">
 <h2>🪖 Mandalorianos</h2>
-
-<p>
-No son una especie sino una cultura guerrera. Famosos por su armadura beskar y código de honor.
-</p>
-
+<p>No son una especie sino una cultura guerrera...</p>
 <div class="img-box">
-  <img src="https://images.ecestaticos.com/9YKGu1bPYvocNO1GuR0qLxBT3Fk=/0x0:0x0/1200x900/filters:fill(white):format(jpg)/f.elconfidencial.com%2Foriginal%2F012%2F682%2F4e7%2F0126824e736a00fb2a08c0b2050896da.jpg" alt="Mandalorianos">
+  <img src="https://images.ecestaticos.com/9YKGu1bPYvocNO1GuR0qLxBT3Fk=/0x0:0x0/1200x900/" alt="Mandalorianos">
 </div>
 </div>
 
-<!-- DATHOMIRIANOS -->
 <div class="race">
 <h2>🔴 Dathomirianos</h2>
-
-<p>
-Incluyen a los Nightbrothers y Nightsisters. Usuarios del lado oscuro con fuerte conexión a la magia de Dathomir.
-</p>
-
+<p>Usuarios del lado oscuro de Dathomir...</p>
 <div class="img-box">
   <img src="https://sm.ign.com/ign_latam/screenshot/default/asaj_mhe6.jpg" alt="Dathomirianos">
 </div>
 </div>
 
-<!-- GUNGANS -->
 <div class="race">
 <h2>🔵 Gungans</h2>
-
-<p>
-Especie anfibia de Naboo. Tienen su propia sociedad submarina y tecnología biológica.
-</p>
-
+<p>Especie anfibia de Naboo...</p>
 <div class="img-box">
   <img src="https://starwarsreport.com/wp-content/uploads/2018/07/Jar-Jar-Binks-1170x550.png" alt="Gungans">
 </div>
