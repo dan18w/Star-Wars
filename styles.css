@@ -106,58 +106,103 @@ header h1 {
 }
 
 /* ===== MOBILE FIX ===== */
-@media (max-width: 600px) {
-  header h1 {
-    font-size: 0.9rem;
+header{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-bottom: 1px solid #333;
+  background: #05070f;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+/* evita que el título infle el header */
+header h1{
+  font-size: 18px;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* móvil: aquí se arregla TODO */
+@media (max-width: 600px){
+
+  header{
+    padding: 8px 10px;
+    gap: 8px;
   }
 
-  header img {
-    width: 42px;
+  header h1{
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
-  .container {
-    padding: 14px 10px;
-  }
-
-  .timeline li {
-    font-size: 0.85rem;
-    padding: 10px 8px 10px 16px;
-  }
-
-  .era h2 {
-    font-size: 0.95rem;
+  header img{
+    width: 40px;
   }
 }
 
-@media (max-width: 600px) {
+.quiz-card{
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px;
+  padding: 18px;
+  margin-top: 12px;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 0 20px rgba(0,0,0,0.4);
+}
 
-  .title {
-    font-size: 22px;
-    text-align: center;
-  }
+/* pregunta */
+#question{
+  font-size: 1rem;
+  margin-bottom: 14px;
+  color: #eaeaea;
+}
 
-  .site-title {
-    font-size: 14px;
-  }
+/* botones */
+#answers button{
+  width: 100%;
+  margin: 6px 0;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.1);
+  background: rgba(255,255,255,0.06);
+  color: white;
+  cursor: pointer;
+  transition: 0.25s ease;
+  font-size: 0.9rem;
+}
 
-  .logo {
-    width: 42px;
-  }
+#answers button:hover{
+  border-color: #ffe81f;
+  transform: translateY(-2px);
+  background: rgba(255, 232, 31, 0.08);
+}
 
-  section h2 {
-    font-size: 16px;
-  }
+/* resultado */
+#result{
+  margin-top: 14px;
+  font-size: 1rem;
+  color: #ffe81f;
+  text-align: center;
+}
 
-  .timeline-box {
-    padding: 14px;
-  }
+/* botón reinicio */
+#restart{
+  margin-top: 12px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ffe81f;
+  background: transparent;
+  color: #ffe81f;
+  cursor: pointer;
+  transition: 0.3s;
+}
 
-  ul {
-    padding-left: 18px;
-  }
-
-  img {
-    max-width: 100%;
-    height: auto;
-  }
+#restart:hover{
+  background: rgba(255,232,31,0.1);
 }

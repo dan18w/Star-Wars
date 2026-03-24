@@ -9,9 +9,27 @@
 body{
   margin:0;
   font-family: Arial, sans-serif;
-  background: radial-gradient(circle at top, #0b0f1a, #000);
+  background: black;
   color:white;
   overflow-x:hidden;
+}
+
+/* Fondo de estrellas (mismo que index.html) */
+body::before {
+  content: "";
+  position: fixed;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(white 1px, transparent 1px);
+  background-size: 50px 50px;
+  opacity: 0.15;
+  animation: moveStars 60s linear infinite;
+  z-index: 0;
+}
+
+@keyframes moveStars {
+  from { transform: translateY(0); }
+  to { transform: translateY(-500px); }
 }
 
 /* HEADER */

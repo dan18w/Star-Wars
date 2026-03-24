@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jedi o Sith – Holocron Galáctico</title>
+  <link rel="icon" type="image/png" href="https://loodibee.com/wp-content/uploads/Star-Wars-transparent-logo-1024x1024.png">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+
+    :root {
+      --jedi:  #4fc3f7;
+      --sith:  #ef5350;
+      --gold:  #ffe81f;
+      --bg:    #05070f;
+      --card:  rgba(255,255,255,0.04);
+      --border:rgba(255,255,255,0.10);
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Crimson Text', Georgia, serif;
+      color: #eaeaea;
+      background: var(--bg);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+
+    /* ===== STAR BACKGROUND ===== */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(1px 1px at 10% 20%, white, transparent),
+        radial-gradient(1px 1px at 30% 80%, white, transparent),
+        radial-gradient(1px 1px at 70% 10%, white, transparent),
+        radial-gradient(1px 1px at 90% 50%, white, transparent),
+        radial-gradient(1px 1px at 50% 35%, white, transparent),
+        radial-gradient(1px 1px at 20% 60%, white, transparent),
+        radial-gradient(1px 1px at 80% 75%, white, transparent),
+        radial-gradient(1px 1px at 45% 90%, white, transparent),
+        radial-gradient(1px 1px at 65% 45%, white, transparent);
+      opacity: 0.35;
+      animation: starsMove 80s linear infinite;
+      z-index: 0;
+    }
+
+    @keyframes starsMove {
+      from { transform: translateY(0); }
+      to   { transform: translateY(-1000px); }
+    }
+
+    /* ===== HEADER ===== */
+    header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 16px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(5, 7, 15, 0.95);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--border);
+    }
+    header img { width: 50px; height: auto; }
+    header h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem;
+      color: var(--gold);
+      margin: 0;
+    }
+
+    /* ===== CONTAINER ===== */
+    .container {
+      position: relative;
+      z-index: 1;
+      max-width: 700px;
+      margin: auto;
+      padding: 30px 14px 60px;
+    }
+
+    /* ===== INTRO ===== */
+    .intro {
+      text-align: center;
+      margin-bottom: 32px;
+      animation: fadeDown 0.7s ease both;
+    }
+    .intro h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.6rem;
+      color: var(--gold);
+      margin-bottom: 8px;
+      letter-spacing: 2px;
+    }
+    .intro p {
+      font-size: 1rem;
+      opacity: 0.7;
+      max-width: 480px;
+      margin: auto;
+      line-height: 1.6;
+    }
+
+    @keyframes fadeDown {
+      from { opacity:0; transform:translateY(-14px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
+
+    /* ===== PROGRESS BAR ===== */
+    .progress-wrap {
+      margin-bottom: 20px;
+      animation: fadeDown 0.7s 0.1s ease both;
+    }
+    .progress-label {
+      font-size: 0.78rem;
+      opacity: 0.5;
+      margin-bottom: 5px;
+      font-family: 'Cinzel', serif;
+      letter-spacing: 1px;
+    }
+    .progress-bar {
+      height: 4px;
+      background: var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--gold);
+      border-radius: 4px;
+      transition: width 0.4s ease;
+      width: 0%;
+    }
+
+    /* ===== QUIZ CARD ===== */
+    .quiz-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 28px 24px;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 40px rgba(0,0,0,0.5);
+      animation: cardIn 0.45s ease both;
+    }
+
+    @keyframes cardIn {
+      from { opacity:0; transform:scale(0.97) translateY(10px); }
+      to   { opacity:1; transform:scale(1) translateY(0); }
+    }
+
+    /* número de pregunta */
+    .q-number {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 2px;
+      color: var(--gold);
+      opacity: 0.6;
+      margin-bottom: 10px;
+    }
+
+    /* texto pregunta */
+    #question {
+      font-size: 1.15rem;
+      margin-bottom: 22px;
+      color: #f0f0f0;
+      line-height: 1.5;
+    }
+
+    /* botones de respuesta */
+    #answers {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    #answers button {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.05);
+      color: #eaeaea;
+      cursor: pointer;
+      transition: 0.25s ease;
+      font-family: 'Crimson Text', serif;
+      font-size: 1rem;
+      text-align: left;
+    }
+    #answers button:hover {
+      border-color: var(--gold);
+      transform: translateX(4px);
+      background: rgba(255,232,31,0.07);
+    }
+
+    /* ===== BARRA LATERAL JEDI / SITH ===== */
+    .side-indicator {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 22px;
+      gap: 10px;
+    }
+    .side-bar {
+      flex: 1;
+      padding: 10px 14px;
+      border-radius: 9px;
+      border: 1px solid transparent;
+      font-family: 'Cinzel', serif;
+      font-size: 0.78rem;
+      letter-spacing: 1px;
+      text-align: center;
+      transition: 0.4s;
+    }
+    .side-bar.jedi {
+      border-color: rgba(79,195,247,0.3);
+      color: var(--jedi);
+      background: rgba(79,195,247,0.05);
+    }
+    .side-bar.sith {
+      border-color: rgba(239,83,80,0.3);
+      color: var(--sith);
+      background: rgba(239,83,80,0.05);
+    }
+    .side-bar .bar-inner {
+      height: 3px;
+      border-radius: 3px;
+      margin-top: 6px;
+      transition: width 0.5s ease;
+    }
+    .side-bar.jedi .bar-inner { background: var(--jedi); width: 0%; }
+    .side-bar.sith .bar-inner { background: var(--sith); width: 0%; }
+
+    /* ===== RESULTADO ===== */
+    #result-section {
+      display: none;
+      text-align: center;
+      animation: cardIn 0.5s ease both;
+    }
+
+    .result-icon {
+      font-size: 4rem;
+      margin-bottom: 10px;
+      filter: drop-shadow(0 0 20px currentColor);
+    }
+
+    .result-title {
+      font-family: 'Cinzel', serif;
+      font-size: 2rem;
+      margin-bottom: 10px;
+      letter-spacing: 3px;
+    }
+    .result-title.jedi { color: var(--jedi); text-shadow: 0 0 20px rgba(79,195,247,0.5); }
+    .result-title.sith { color: var(--sith); text-shadow: 0 0 20px rgba(239,83,80,0.5); }
+    .result-title.neutral { color: var(--gold); text-shadow: 0 0 20px rgba(255,232,31,0.4); }
+
+    .result-desc {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      opacity: 0.85;
+      max-width: 480px;
+      margin: 0 auto 24px;
+    }
+
+    .score-display {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-bottom: 28px;
+    }
+    .score-box {
+      padding: 10px 20px;
+      border-radius: 9px;
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+    }
+    .score-box.jedi { border: 1px solid rgba(79,195,247,0.4); color: var(--jedi); }
+    .score-box.sith { border: 1px solid rgba(239,83,80,0.4); color: var(--sith); }
+    .score-box span { display: block; font-size: 1.5rem; font-weight: 700; }
+
+    #restart {
+      padding: 12px 36px;
+      border-radius: 9px;
+      border: 1px solid var(--gold);
+      background: transparent;
+      color: var(--gold);
+      cursor: pointer;
+      font-family: 'Cinzel', serif;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      transition: 0.3s;
+    }
+    #restart:hover {
+      background: rgba(255,232,31,0.1);
+      box-shadow: 0 0 16px rgba(255,232,31,0.2);
+    }
+
+    /* ===== LIGHTSABER OVERLAY ===== */
+    #saber-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 100;
+      background: rgba(5, 7, 15, 0.92);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 28px;
+    }
+    #saber-overlay.active {
+      display: flex;
+    }
+
+    .saber-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    /* empuñadura */
+    .saber-hilt {
+      width: 22px;
+      height: 90px;
+      background: linear-gradient(180deg, #aaa 0%, #666 40%, #888 60%, #555 100%);
+      border-radius: 4px 4px 6px 6px;
+      position: relative;
+      box-shadow: 0 0 8px rgba(0,0,0,0.8);
+      flex-shrink: 0;
+    }
+    .saber-hilt::before {
+      content: "";
+      position: absolute;
+      left: -8px;
+      top: 18px;
+      width: 38px;
+      height: 8px;
+      background: linear-gradient(90deg, #777, #ccc, #777);
+      border-radius: 3px;
+    }
+    .saber-hilt::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 10px;
+      height: 10px;
+      background: radial-gradient(circle, #fff 30%, rgba(255,255,255,0.2) 100%);
+      border-radius: 50%;
+    }
+
+    /* hoja del sable */
+    .saber-blade {
+      width: 14px;
+      height: 0px;              /* empieza en 0, crece con JS */
+      border-radius: 6px 6px 0 0;
+      order: -1;                /* encima de la empuñadura */
+      transition: height 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 0.9s ease,
+                  opacity 0.9s ease;
+      opacity: 0;
+    }
+    .saber-blade.jedi-blade {
+      background: linear-gradient(to top, #a5f3a5, #00e676, #69ff88);
+      box-shadow:
+        0 0 10px #00e676,
+        0 0 30px #00e676,
+        0 0 60px rgba(0,230,118,0.5);
+    }
+    .saber-blade.sith-blade {
+      background: linear-gradient(to top, #ff8a80, #f44336, #ff1744);
+      box-shadow:
+        0 0 10px #f44336,
+        0 0 30px #f44336,
+        0 0 60px rgba(244,67,54,0.5);
+    }
+    .saber-blade.neutral-blade {
+      background: linear-gradient(to top, #fff9c4, #ffe81f, #fff176);
+      box-shadow:
+        0 0 10px #ffe81f,
+        0 0 30px #ffe81f,
+        0 0 60px rgba(255,232,31,0.5);
+    }
+
+    /* texto debajo */
+    .saber-label {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      letter-spacing: 3px;
+      opacity: 0;
+      transition: opacity 1s ease 0.8s;
+      text-align: center;
+    }
+    .saber-label.visible { opacity: 1; }
+
+    .saber-skip {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      opacity: 0.4;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: transparent;
+      color: #eaeaea;
+      padding: 7px 18px;
+      border-radius: 7px;
+      transition: opacity 0.3s;
+      margin-top: 10px;
+    }
+    .saber-skip:hover { opacity: 0.8; }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 600px) {
+      header { padding: 8px 10px; gap: 8px; }
+      header h1 { font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+      header img { width: 40px; }
+      .quiz-card { padding: 20px 16px; }
+      .intro h2 { font-size: 1.3rem; }
+      .result-title { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <img src="https://loodibee.com/wp-content/uploads/Star-Wars-transparent-logo-1024x1024.png" alt="Star Wars Logo">
+  <h1>Holocron Galáctico – Quiz</h1>
+</header>
+
+<div class="container">
+
+  <div class="intro">
+    <h2>¿Jedi o Sith?</h2>
+    <p>Responde con honestidad. La Fuerza ya sabe lo que eres — este quiz solo te lo confirma.</p>
+  </div>
+
+  <!-- SECCIÓN QUIZ -->
+  <div id="quiz-section">
+    <div class="progress-wrap">
+      <div class="progress-label" id="progress-label">PREGUNTA 1 DE 10</div>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+    </div>
+
+    <div class="quiz-card">
+      <div class="q-number" id="q-number">PREGUNTA 1</div>
+      <div id="question"></div>
+      <div id="answers"></div>
+
+      <div class="side-indicator">
+        <div class="side-bar jedi">
+          ⚪ JEDI
+          <div class="bar-inner" id="jedi-bar"></div>
+        </div>
+        <div class="side-bar sith">
+          🔴 SITH
+          <div class="bar-inner" id="sith-bar"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECCIÓN RESULTADO -->
+  <div id="result-section" class="quiz-card">
+    <div class="result-icon" id="result-icon"></div>
+    <div class="result-title" id="result-title"></div>
+    <p class="result-desc" id="result-desc"></p>
+    <div class="score-display">
+      <div class="score-box jedi">JEDI<span id="score-jedi">0</span></div>
+      <div class="score-box sith">SITH<span id="score-sith">0</span></div>
+    </div>
+    <button id="restart">↺ INTENTAR DE NUEVO</button>
+  </div>
+
+</div>
+
+<script>
+  // ============================================================
+  // PLANTILLA DE PREGUNTAS
+  // Cada objeto tiene:
+  //   question : string  → texto de la pregunta
+  //   answers  : array de objetos con:
+  //       text   : string  → texto de la opción
+  //       points : number  → positivo = Jedi | negativo = Sith
+  // ============================================================
+  const QUESTIONS = [
+    {
+      question: "Un aldeano inocente está en peligro. ¿Qué haces?",
+      answers: [
+        { text: "Lo protejo sin importar el costo personal.",                points:  2 },
+        { text: "Lo ayudo, pero evalúo primero el riesgo.",                  points:  1 },
+        { text: "Solo actúo si me beneficia de alguna forma.",               points: -1 },
+        { text: "Su debilidad no es mi problema.",                           points: -2 },
+      ]
+    },
+    {
+      question: "Un enemigo caído te suplica misericordia. ¿Qué decides?",
+      answers: [
+        { text: "Lo perdono y le ofrezco una segunda oportunidad.",          points:  2 },
+        { text: "Lo dejo ir, pero lo vigilo.",                               points:  1 },
+        { text: "Lo detengo pero no lo mato… por ahora.",                   points: -1 },
+        { text: "La misericordia es una debilidad. Lo elimino.",             points: -2 },
+      ]
+    },
+    {
+      question: "Tienes acceso al poder suficiente para gobernar la galaxia. ¿Qué haces?",
+      answers: [
+        { text: "Renuncio a él. El poder corrompe.",                         points:  2 },
+        { text: "Lo uso para establecer paz duradera.",                      points:  1 },
+        { text: "Lo uso para proteger a los que me importan.",               points: -1 },
+        { text: "Lo tomo. La galaxia necesita un líder fuerte: yo.",         points: -2 },
+      ]
+    },
+    {
+      question: "Tu maestro te da una orden con la que no estás de acuerdo. ¿Cuál es tu reacción?",
+      answers: [
+        { text: "La sigo y luego lo debato con respeto.",                    points:  2 },
+        { text: "Pido explicación antes de obedecer.",                       points:  1 },
+        { text: "La cuestiono abiertamente y actúo a mi manera.",            points: -1 },
+        { text: "Nadie me da órdenes. Lo supero y tomo el control.",         points: -2 },
+      ]
+    },
+    {
+      question: "¿Cómo defines la paz?",
+      answers: [
+        { text: "Armonía entre todos los seres de la galaxia.",              points:  2 },
+        { text: "Ausencia de conflicto innecesario.",                        points:  1 },
+        { text: "Orden impuesto por quienes tienen la razón.",               points: -1 },
+        { text: "La paz es ilusión. Solo el poder es real.",                 points: -2 },
+      ]
+    },
+    {
+      question: "Un amigo traiciona tu confianza por ambición. ¿Cómo reaccionas?",
+      answers: [
+        { text: "Intento entender sus razones y lo perdono.",                points:  2 },
+        { text: "Me alejo con tristeza, pero sin rencor.",                   points:  1 },
+        { text: "Lo confronto y exijo explicaciones.",                       points: -1 },
+        { text: "La traición merece consecuencias. No hay piedad.",          points: -2 },
+      ]
+    },
+    {
+      question: "Sientes una emoción intensa: ira, miedo, dolor. ¿Qué haces con ella?",
+      answers: [
+        { text: "La reconozco y la dejo pasar con serenidad.",               points:  2 },
+        { text: "La proceso lentamente y aprendo de ella.",                  points:  1 },
+        { text: "La uso como combustible para actuar.",                      points: -1 },
+        { text: "Me entrego a ella. Me da fuerza.",                          points: -2 },
+      ]
+    },
+    {
+      question: "¿Qué representa la Fuerza para ti?",
+      answers: [
+        { text: "Una energía que une a todos los seres vivos.",              points:  2 },
+        { text: "Un don que implica responsabilidad.",                       points:  1 },
+        { text: "Una herramienta para alcanzar mis metas.",                  points: -1 },
+        { text: "Un arma que los débiles no merecen.",                       points: -2 },
+      ]
+    },
+    {
+      question: "¿Cuál es tu opinión sobre el sacrificio personal?",
+      answers: [
+        { text: "Es el mayor acto de honor que existe.",                     points:  2 },
+        { text: "Vale la pena si protege algo importante.",                  points:  1 },
+        { text: "Solo me sacrifico si no hay otra opción.",                  points: -1 },
+        { text: "El sacrificio es para los perdedores.",                     points: -2 },
+      ]
+    },
+    {
+      question: "Al final de tu camino, ¿cómo quieres ser recordado?",
+      answers: [
+        { text: "Como alguien que protegió la vida y la esperanza.",         points:  2 },
+        { text: "Como alguien que hizo lo correcto cuando importaba.",       points:  1 },
+        { text: "Como alguien que nunca fue derrotado.",                     points: -1 },
+        { text: "El miedo es un legado suficiente.",                         points: -2 },
+      ]
+    },
+
+    // ============================================================
+    // AGREGA MÁS PREGUNTAS AQUÍ con el mismo formato:
+    // {
+    //   question: "Tu pregunta aquí",
+    //   answers: [
+    //     { text: "Opción Jedi fuerte",    points:  2 },
+    //     { text: "Opción Jedi leve",      points:  1 },
+    //     { text: "Opción Sith leve",      points: -1 },
+    //     { text: "Opción Sith fuerte",    points: -2 },
+    //   ]
+    // },
+    // ============================================================
+  ];
+
+  // ============================================================
+  // LÓGICA DEL QUIZ
+  // ============================================================
+  let currentQ  = 0;
+  let jediScore = 0;
+  let sithScore = 0;
+  const total   = QUESTIONS.length;
+
+  const questionEl    = document.getElementById('question');
+  const answersEl     = document.getElementById('answers');
+  const qNumberEl     = document.getElementById('q-number');
+  const progressLabel = document.getElementById('progress-label');
+  const progressFill  = document.getElementById('progress-fill');
+  const jediBar       = document.getElementById('jedi-bar');
+  const sithBar       = document.getElementById('sith-bar');
+  const quizSection   = document.getElementById('quiz-section');
+  const resultSection = document.getElementById('result-section');
+
+  function shuffle(arr) {
+    return arr.slice().sort(() => Math.random() - 0.5);
+  }
+
+  function loadQuestion() {
+    const q = QUESTIONS[currentQ];
+    questionEl.textContent = q.question;
+    qNumberEl.textContent  = `PREGUNTA ${currentQ + 1}`;
+    progressLabel.textContent = `PREGUNTA ${currentQ + 1} DE ${total}`;
+    progressFill.style.width  = `${(currentQ / total) * 100}%`;
+
+    answersEl.innerHTML = '';
+    const shuffled = shuffle(q.answers);
+    shuffled.forEach(opt => {
+      const btn = document.createElement('button');
+      btn.textContent = opt.text;
+      btn.addEventListener('click', () => selectAnswer(opt.points, btn));
+      answersEl.appendChild(btn);
+    });
+  }
+
+  function updateBars() {
+    const maxPossible = total * 2;
+    const jPct = Math.round((jediScore / maxPossible) * 100);
+    const sPct = Math.round((sithScore / maxPossible) * 100);
+    jediBar.style.width = `${jPct}%`;
+    sithBar.style.width = `${sPct}%`;
+  }
+
+  function selectAnswer(points, btn) {
+    // deshabilitar todos los botones
+    answersEl.querySelectorAll('button').forEach(b => b.disabled = true);
+
+    if (points > 0) {
+      jediScore += points;
+      btn.style.borderColor = 'var(--jedi)';
+      btn.style.background  = 'rgba(79,195,247,0.12)';
+    } else {
+      sithScore += Math.abs(points);
+      btn.style.borderColor = 'var(--sith)';
+      btn.style.background  = 'rgba(239,83,80,0.12)';
+    }
+
+    updateBars();
+
+    setTimeout(() => {
+      currentQ++;
+      if (currentQ < total) {
+        loadQuestion();
+      } else {
+        showResult();
+      }
+    }, 500);
+  }
+
+  function showSaberAnimation(side, onDone) {
+    const overlay = document.getElementById('saber-overlay');
+    const blade   = document.getElementById('saber-blade');
+    const label   = document.getElementById('saber-label');
+    const audio   = document.getElementById('saber-audio');
+    const skip    = document.getElementById('saber-skip');
+
+    // configurar según lado
+    blade.className = 'saber-blade';
+    if (side === 'jedi') {
+      blade.classList.add('jedi-blade');
+      label.textContent = 'QUE LA FUERZA TE ACOMPAÑE';
+      label.style.color = '#00e676';
+    } else if (side === 'sith') {
+      blade.classList.add('sith-blade');
+      label.textContent = 'LA OSCURIDAD TE RECLAMA';
+      label.style.color = '#f44336';
+    } else {
+      blade.classList.add('neutral-blade');
+      label.textContent = 'EL EQUILIBRIO ERES TÚ';
+      label.style.color = '#ffe81f';
+    }
+
+    overlay.classList.add('active');
+
+    // reproducir sonido
+    audio.currentTime = 0;
+    audio.play().catch(() => {});
+
+    // activar hoja con delay pequeño
+    setTimeout(() => {
+      blade.style.height  = '280px';
+      blade.style.opacity = '1';
+    }, 120);
+
+    // mostrar texto
+    setTimeout(() => {
+      label.classList.add('visible');
+    }, 300);
+
+    // cerrar overlay
+    function closeSaber() {
+      overlay.classList.remove('active');
+      blade.style.height  = '0px';
+      blade.style.opacity = '0';
+      label.classList.remove('visible');
+      onDone();
+    }
+
+    // auto-cerrar a los 3.5s
+    const autoClose = setTimeout(closeSaber, 3500);
+
+    skip.onclick = () => {
+      clearTimeout(autoClose);
+      closeSaber();
+    };
+  }
+
+  function showResult() {
+    quizSection.style.display  = 'none';
+    progressFill.style.width = '100%';
+
+    const diff = jediScore - sithScore;
+    let side = 'neutral';
+    if (diff > 1)  side = 'jedi';
+    if (diff < -1) side = 'sith';
+
+    // primero la animación, luego el resultado
+    showSaberAnimation(side, () => {
+      resultSection.style.display = 'block';
+
+      document.getElementById('score-jedi').textContent = jediScore;
+      document.getElementById('score-sith').textContent = sithScore;
+
+      const iconEl  = document.getElementById('result-icon');
+      const titleEl = document.getElementById('result-title');
+      const descEl  = document.getElementById('result-desc');
+
+      if (diff > 4) {
+        iconEl.textContent  = '🔵';
+        titleEl.textContent = 'GUARDIÁN JEDI';
+        titleEl.className   = 'result-title jedi';
+        descEl.textContent  = 'La Fuerza fluye en ti con claridad y propósito. Tu paciencia, compasión y desapego del poder te elevan como verdadero guardián de la galaxia. El Consejo Jedi te recibirá con los brazos abiertos.';
+      } else if (diff > 1) {
+        iconEl.textContent  = '🔵';
+        titleEl.textContent = 'JEDI COMPROMETIDO';
+        titleEl.className   = 'result-title jedi';
+        descEl.textContent  = 'Caminas en la Luz, aunque la oscuridad te ronda. Tus valores son sólidos pero las tentaciones no te son ajenas. Sigue tu entrenamiento y la sombra no te alcanzará.';
+      } else if (diff < -4) {
+        iconEl.textContent  = '🔴';
+        titleEl.textContent = 'SEÑOR SITH';
+        titleEl.className   = 'result-title sith';
+        descEl.textContent  = 'La oscuridad te consume y la abrazas sin reservas. Tu sed de poder y tu desprecio por la debilidad te convierten en una amenaza para toda la galaxia. La República tiembla ante tu presencia.';
+      } else if (diff < -1) {
+        iconEl.textContent  = '🔴';
+        titleEl.textContent = 'APRENDIZ SITH';
+        titleEl.className   = 'result-title sith';
+        descEl.textContent  = 'El lado oscuro te seduce y ya has cedido varias veces a él. Tu ambición supera tu templanza. Un Maestro Sith te encontraría un aprendiz prometedor… y peligroso.';
+      } else {
+        iconEl.textContent  = '⚫';
+        titleEl.textContent = 'EQUILIBRIO EN LA FUERZA';
+        titleEl.className   = 'result-title neutral';
+        descEl.textContent  = 'Ni completamente Jedi ni completamente Sith. Eres el punto de equilibrio que las profecías predicen. Pocos logran caminar esta línea sin caer. La galaxia entera depende de tu elección final.';
+      }
+    });
+  }
+
+  document.getElementById('restart').addEventListener('click', () => {
+    currentQ  = 0;
+    jediScore = 0;
+    sithScore = 0;
+    jediBar.style.width = '0%';
+    sithBar.style.width = '0%';
+    resultSection.style.display = 'none';
+    quizSection.style.display   = 'block';
+    loadQuestion();
+  });
+
+  // Iniciar
+  loadQuestion();
+</script>
+
+<!-- ===== SABER OVERLAY ===== -->
+<div id="saber-overlay">
+  <div class="saber-wrap">
+    <div class="saber-blade" id="saber-blade"></div>
+    <div class="saber-hilt"></div>
+  </div>
+  <div class="saber-label" id="saber-label"></div>
+  <button class="saber-skip" id="saber-skip">CONTINUAR →</button>
+</div>
+
+<audio id="saber-audio" src="animacionfinal.mp3" preload="auto"></audio>
+
+</body>
+</html>
