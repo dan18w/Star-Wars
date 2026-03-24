@@ -576,6 +576,8 @@
   // language overlay elements
   const langOverlay = document.createElement('div');
   langOverlay.id = 'lang-overlay';
+  // critical display styles inline to avoid mobile cache/extension hiding
+  langOverlay.style.cssText = 'display:none;position:fixed;inset:0;z-index:99999;background:rgba(5,7,15,0.88);backdrop-filter:blur(4px);justify-content:center;align-items:center;';
   langOverlay.innerHTML = `
     <div class="lang-card">
       <h3>Selecciona idioma / Choose language</h3>
@@ -677,14 +679,17 @@
   // show overlay on load
   function showLangOverlay() {
     langOverlay.classList.add('active');
+    langOverlay.style.display = 'flex';
   }
 
   langBtnES.addEventListener('click', () => {
     langOverlay.classList.remove('active');
+    langOverlay.style.display = 'none';
     applyLanguage('es');
   });
   langBtnEN.addEventListener('click', () => {
     langOverlay.classList.remove('active');
+    langOverlay.style.display = 'none';
     applyLanguage('en');
   });
 
@@ -861,8 +866,8 @@
     loadQuestion();
   });
 
-  // Iniciar
-  showLangOverlay();
+  // Iniciar: mostrar overlay después de cargar para evitar problemas de caché/extensiones en móvil
+  window.addEventListener('load', showLangOverlay);
 </script>
 
 <!-- ===== SABER OVERLAY ===== -->
