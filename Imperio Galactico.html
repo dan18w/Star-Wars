@@ -30,7 +30,7 @@
   <h1 class="title">🏛️ Imperio Galáctico</h1>
 
   <!-- LOGO IMPERIO -->
-  <div style="text-align:center; margin: 20px 0;">
+  <div class="center-logo">
     <img src="https://img.icons8.com/ios_filled/600/FA5252/empire.png" width="180" alt="Imperio Galáctico">
   </div>
 
@@ -43,7 +43,7 @@
   </div>
 
   <!-- INFORMACION GENERAL -->
-  <section>
+  <section class="section-card">
     <h2>📌 Información General</h2>
     <ul>
       <li><strong>Nombre:</strong> Imperio Galáctico</li>
@@ -99,12 +99,391 @@
   </section>
 
   <!-- RANGOS -->
-  <section>
-    <h2>🎖️ Rangos del Imperio</h2>
+  <!-- RANGOS -->
+  <section id="ranks-widget" class="section-card">
+    <!-- Scoped Imperial ranks widget -->
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
 
-    <div class="timeline-box">
-      <p>Imagen de rangos imperiales</p>
-      <img src="rangos.jpg" width="450" alt="Rangos Imperiales">
+    .ranks-widget { --bg: #0a0a0f; --surface: #111118; --border: #2a2a3a; --accent: #c0392b; --text: #dde1e8; --sub: #7a8090; --red: #c0392b; --blue: #1a6bb5; --yellow: #d4a017; --gray: #6b7280; --pip-size: 14px; --pip-gap: 3px; }
+
+    .ranks-widget * { box-sizing: border-box; }
+    .ranks-widget { background: transparent; color: var(--text); font-family: 'Share Tech Mono', monospace; padding: 8px 0; }
+
+    .ranks-widget header { text-align: center; margin-bottom: 18px; }
+    .ranks-widget .emblem { display: inline-block; width: 56px; height: 56px; margin-bottom: 12px; opacity: 0.85; }
+    .ranks-widget h1 { font-family: 'Orbitron', sans-serif; font-size: 1.4rem; font-weight: 900; letter-spacing: .18em; text-transform: uppercase; color: #fff; text-shadow: 0 0 18px rgba(192,57,43,0.35); margin-bottom:6px }
+    .ranks-widget .divider { width: 160px; height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); margin: 8px auto 0; }
+
+    .ranks-widget .category { font-family: 'Orbitron', sans-serif; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sub); padding: 12px 0 6px 4px; border-bottom: 1px solid var(--border); margin-bottom: 4px; }
+
+    .ranks-widget .rank-list { list-style: none; max-width: 720px; margin: 0 auto; padding: 0; }
+    .ranks-widget .rank-item { display:flex; align-items:center; justify-content:space-between; padding:10px 12px; border-bottom:1px solid rgba(255,255,255,0.03); transition: background .12s; border-radius:4px; gap:12px }
+    .ranks-widget .rank-item:hover { background: rgba(255,255,255,0.02); }
+    .ranks-widget .rank-name { font-size:0.9rem; letter-spacing:.04em; color:var(--text); flex:1; min-width:0 }
+
+    .ranks-widget .badge { display:flex; align-items:center; gap:6px; flex-shrink:0 }
+    .ranks-widget .pip-grid { display:grid; gap: var(--pip-gap); }
+    .ranks-widget .pip { width: var(--pip-size); height: var(--pip-size); border-radius:2px }
+    .ranks-widget .pip.red { background: var(--red); box-shadow: 0 0 4px rgba(192,57,43,0.45) }
+    .ranks-widget .pip.blue { background: var(--blue); box-shadow: 0 0 4px rgba(26,107,181,0.45) }
+    .ranks-widget .pip.yellow { background: var(--yellow); box-shadow: 0 0 4px rgba(212,160,23,0.45) }
+    .ranks-widget .pip.empty { background: transparent; border:1px solid var(--border) }
+
+    .ranks-widget .cylinders { display:flex; gap:4px; align-items:center }
+    .ranks-widget .cyl { width:7px; height:20px; border-radius:3px; background:var(--gray); opacity:.7 }
+    .ranks-widget .cyl.silver { background:#9ca3af }
+    .ranks-widget .cyl.gold { background: var(--yellow) }
+
+    .ranks-widget .pip-row { display:flex; gap: var(--pip-gap) }
+
+    /* make sure widget images (if any) don't overflow */
+    .ranks-widget img { max-width: 100%; height: auto; display:block }
+    </style>
+
+    <div class="ranks-widget">
+      <header>
+        <svg class="emblem" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="50" cy="50" r="48" fill="none" stroke="#c0392b" stroke-width="2"/>
+          <circle cx="50" cy="50" r="14" fill="#c0392b"/>
+          <g fill="#c0392b">
+            <polygon points="50,2 54,16 46,16"/>
+            <polygon points="50,98 54,84 46,84"/>
+            <polygon points="2,50 16,54 16,46"/>
+            <polygon points="98,50 84,54 84,46"/>
+            <polygon points="15,15 25,26 17,34"/>
+            <polygon points="85,85 75,74 83,66"/>
+            <polygon points="85,15 75,26 83,34"/>
+            <polygon points="15,85 25,74 17,66"/>
+          </g>
+        </svg>
+        <h1>Rangos del Imperio</h1>
+        <div class="divider"></div>
+      </header>
+
+      <ul class="rank-list">
+        <!-- Tropa Básica -->
+        <li class="category">Tropa Básica</li>
+        <li class="rank-item"><span class="rank-name">Cadete</span><div class="badge"><div class="pip-grid" style="grid-template-columns: repeat(1,1fr)"><div class="pip red"></div></div></div></li>
+        <li class="rank-item"><span class="rank-name">Segundo Teniente</span><div class="badge"><div class="pip-grid" style="grid-template-columns: repeat(3,1fr)"><div class="pip red"></div><div class="pip red"></div><div class="pip red"></div></div></div></li>
+        <li class="rank-item"><span class="rank-name">Teniente</span><div class="badge"><div class="pip-grid" style="grid-template-columns: repeat(3,1fr)"><div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div></div></div></li>
+        <li class="rank-item"><span class="rank-name">Agente Especial</span><div class="badge"><div class="pip-row"><div class="pip blue"></div><div class="pip blue"></div><div class="pip red"></div></div></div></li>
+
+        <!-- Suboficiales -->
+        <li class="category">Suboficiales</li>
+        <li class="rank-item"><span class="rank-name">Subteniente Superior</span><div class="badge"><div class="pip-grid" style="grid-template-columns: repeat(2,1fr); margin-right:4px"><div class="pip red"></div><div class="pip empty"></div><div class="pip blue"></div><div class="pip blue"></div></div><div class="cylinders"><div class="cyl silver"></div><div class="cyl silver"></div></div></div></li>
+        <li class="rank-item"><span class="rank-name">Teniente Junior</span><div class="badge"><div class="pip-grid" style="grid-template-columns: repeat(2,1fr); margin-right:4px"><div class="pip red"></div><div class="pip red"></div><div class="pip blue"></div><div class="pip blue"></div></div><div class="cylinders"><div class="cyl silver"></div><div class="cyl silver"></div></div></div></li>
+        <li class="rank-item"><span class="rank-name">Teniente de la Armada</span><div class="badge"><div class="pip-grid" style="grid-template-columns: repeat(3,1fr); margin-right:4px"><div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div></div><div class="cylinders"><div class="cyl silver"></div><div class="cyl silver"></div></div></div></li>
+
+        <!-- Teniente del Ejército: 2x2 rojo+azul + cilindros -->
+        <li class="rank-item">
+          <span class="rank-name">Teniente del Ejército</span>
+          <div class="badge">
+            <div class="pip-grid" style="grid-template-columns: repeat(2,1fr); margin-right:4px">
+              <div class="pip red"></div><div class="pip red"></div>
+              <div class="pip blue"></div><div class="pip blue"></div>
+            </div>
+            <div class="cylinders"><div class="cyl silver"></div><div class="cyl silver"></div></div>
+          </div>
+        </li>
+
+        <!-- Teniente Comandante: 3x2 rojo arriba azul abajo + cilindros -->
+        <li class="rank-item">
+          <span class="rank-name">Teniente Comandante</span>
+          <div class="badge">
+            <div class="pip-grid" style="grid-template-columns: repeat(3,1fr); margin-right:4px">
+              <div class="pip red"></div><div class="pip red"></div><div class="pip empty"></div>
+              <div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div>
+            </div>
+            <div class="cylinders"><div class="cyl silver"></div><div class="cyl silver"></div></div>
+          </div>
+        </li>
+
+        <!-- OFICIALES -->
+        <li class="category">Oficiales</li>
+
+        <!-- Comandante del Ejército: cilindros + 3x2 mezclado -->
+        <li class="rank-item">
+          <span class="rank-name">Comandante del Ejército</span>
+          <div class="badge">
+            <div class="cylinders" style="margin-right:6px"><div class="cyl silver"></div><div class="cyl silver"></div></div>
+            <div class="pip-grid" style="grid-template-columns: repeat(3,1fr)">
+              <div class="pip red"></div><div class="pip red"></div><div class="pip empty"></div>
+              <div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div>
+            </div>
+          </div>
+        </li>
+
+        <!-- Comandante de la Armada: cilindros + 4x2 azul -->
+        <li class="rank-item">
+          <span class="rank-name">Comandante de la Armada</span>
+          <div class="badge">
+            <div class="cylinders" style="margin-right:6px"><div class="cyl silver"></div><div class="cyl silver"></div></div>
+            <div class="pip-grid" style="grid-template-columns: repeat(4,1fr)">
+              <div class="pip red"></div><div class="pip red"></div><div class="pip blue"></div><div class="pip blue"></div>
+              <div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div>
+            </div>
+          </div>
+        </li>
+
+        <!-- Capitán: 4x2 rojo+azul -->
+        <li class="rank-item">
+          <span class="rank-name">Capitán</span>
+          <div class="badge">
+            <div class="pip-grid" style="grid-template-columns: repeat(4,1fr)">
+              <div class="pip red"></div><div class="pip red"></div><div class="pip blue"></div><div class="pip blue"></div>
+              <div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div>
+            </div>
+          </div>
+        </li>
+
+        <!-- Capitán de Línea: cilindros + 4x2 rojo+azul -->
+        <li class="rank-item">
+          <span class="rank-name">Capitán de Línea</span>
+          <div class="badge">
+            <div class="cylinders" style="margin-right:6px"><div class="cyl silver"></div><div class="cyl silver"></div></div>
+            <div class="pip-grid" style="grid-template-columns: repeat(4,1fr)">
+              <div class="pip red"></div><div class="pip red"></div><div class="pip red"></div><div class="pip blue"></div>
+              <div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div>
+            </div>
+            <div class="cylinders" style="margin-left:6px"><div class="cyl silver"></div><div class="cyl silver"></div></div>
+          </div>
+        </li>
+
+        <!-- Mayor: 3x2 azul + cilindros -->
+        <li class="rank-item">
+          <span class="rank-name">Mayor</span>
+          <div class="badge">
+            <div class="pip-grid" style="grid-template-columns: repeat(3,1fr); margin-right:4px">
+              <div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div>
+              <div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div>
+            </div>
+            <div class="cylinders"><div class="cyl silver"></div><div class="cyl silver"></div></div>
+          </div>
+        </li>
+
+        <!-- OFICIALES SUPERIORES -->
+        <li class="category">Oficiales Superiores</li>
+
+        <!-- Coronel: 4x2 azul -->
+        <li class="rank-item">
+          <span class="rank-name">Coronel</span>
+          <div class="badge">
+            <div class="pip-grid" style="grid-template-columns: repeat(4,1fr)">
+              <div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div>
+              <div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div>
+            </div>
+          </div>
+        </li>
+
+        <!-- Alto Coronel: cilindros + 4x2 rojo+azul + cilindros -->
+        <li class="rank-item">
+          <span class="rank-name">Alto Coronel</span>
+          <div class="badge">
+            <div class="cylinders" style="margin-right:6px"><div class="cyl silver"></div><div class="cyl silver"></div></div>
+            <div class="pip-grid" style="grid-template-columns: repeat(4,1fr)">
+              <div class="pip red"></div><div class="pip red"></div><div class="pip blue"></div><div class="pip blue"></div>
+              <div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div>
+            </div>
+            <div class="cylinders" style="margin-left:6px"><div class="cyl silver"></div><div class="cyl silver"></div></div>
+          </div>
+        </li>
+
+        <!-- Comodoro: cilindros + 4x2 amarillo+rojo -->
+        <li class="rank-item">
+          <span class="rank-name">Comodoro</span>
+          <div class="badge">
+            <div class="cylinders" style="margin-right:6px"><div class="cyl silver"></div><div class="cyl silver"></div></div>
+            <div class="pip-grid" style="grid-template-columns: repeat(4,1fr)">
+              <div class="pip yellow"></div><div class="pip red"></div><div class="pip red"></div><div class="pip red"></div>
+              <div class="pip red"></div><div class="pip red"></div><div class="pip red"></div><div class="pip red"></div>
+            </div>
+          </div>
+        </li>
+
+        <!-- General: 4x2 rojo -->
+        <li class="rank-item">
+          <span class="rank-name">General</span>
+          <div class="badge">
+            <div class="pip-grid" style="grid-template-columns: repeat(4,1fr)">
+              <div class="pip red"></div><div class="pip red"></div><div class="pip red"></div><div class="pip red"></div>
+              <div class="pip red"></div><div class="pip red"></div><div class="pip red"></div><div class="pip red"></div>
+            </div>
+          </div>
+        </li>
+
+        <!-- ALTOS MANDOS -->
+        <li class="category">Altos Mandos</li>
+
+        <!-- Mayor General: cilindros + 4x2 amarillo+rojo + cilindros -->
+        <li class="rank-item">
+          <span class="rank-name">Mayor General</span>
+          <div class="badge">
+            <div class="cylinders" style="margin-right:6px"><div class="cyl silver"></div><div class="cyl silver"></div></div>
+            <div class="pip-grid" style="grid-template-columns: repeat(4,1fr)">
+              <div class="pip yellow"></div><div class="pip yellow"></div><div class="pip yellow"></div><div class="pip red"></div>
+              <div class="pip red"></div><div class="pip red"></div><div class="pip red"></div><div class="pip red"></div>
+            </div>
+            <div class="cylinders" style="margin-left:6px"><div class="cyl silver"></div><div class="cyl silver"></div></div>
+          </div>
+        </li>
+
+        <!-- Alto General: cilindros + 4x2 azul + cilindros -->
+        <li class="rank-item">
+          <span class="rank-name">Alto General</span>
+          <div class="badge">
+            <div class="cylinders" style="margin-right:6px"><div class="cyl silver"></div><div class="cyl silver"></div></div>
+            <div class="pip-grid" style="grid-template-columns: repeat(4,1fr)">
+              <div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div>
+              <div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div>
+            </div>
+            <div class="cylinders" style="margin-left:6px"><div class="cyl silver"></div><div class="cyl silver"></div></div>
+          </div>
+        </li>
+
+        <!-- General de Brigada: 4x2 azul+amarillo -->
+        <li class="rank-item">
+          <span class="rank-name">General de Brigada</span>
+          <div class="badge">
+            <div class="pip-grid" style="grid-template-columns: repeat(4,1fr)">
+              <div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div>
+              <div class="pip blue"></div><div class="pip yellow"></div><div class="pip yellow"></div><div class="pip yellow"></div>
+            </div>
+          </div>
+        </li>
+
+        <!-- Vicealmirante: cilindros + 4x2 azul+amarillo + cilindros -->
+        <li class="rank-item">
+          <span class="rank-name">Vicealmirante</span>
+          <div class="badge">
+            <div class="cylinders" style="margin-right:6px"><div class="cyl silver"></div><div class="cyl silver"></div></div>
+            <div class="pip-grid" style="grid-template-columns: repeat(4,1fr)">
+              <div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div>
+              <div class="pip blue"></div><div class="pip blue"></div><div class="pip yellow"></div><div class="pip yellow"></div>
+            </div>
+            <div class="cylinders" style="margin-left:6px"><div class="cyl silver"></div><div class="cyl silver"></div></div>
+          </div>
+        </li>
+
+        <!-- Almirante: 4x2 azul + cilindros -->
+        <li class="rank-item">
+          <span class="rank-name">Almirante</span>
+          <div class="badge">
+            <div class="pip-grid" style="grid-template-columns: repeat(4,1fr); margin-right:4px">
+              <div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div>
+              <div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div>
+            </div>
+            <div class="cylinders"><div class="cyl silver"></div><div class="cyl silver"></div></div>
+          </div>
+        </li>
+
+        <!-- COMANDO SUPREMO -->
+        <li class="category">Comando Supremo</li>
+
+        <!-- Almirante de la Flota: cilindros + 4x2 amarillo+rojo+azul -->
+        <li class="rank-item">
+          <span class="rank-name">Almirante de la Flota</span>
+          <div class="badge">
+            <div class="cylinders" style="margin-right:6px"><div class="cyl silver"></div><div class="cyl silver"></div></div>
+            <div class="pip-grid" style="grid-template-columns: repeat(4,1fr)">
+              <div class="pip yellow"></div><div class="pip red"></div><div class="pip red"></div><div class="pip red"></div>
+              <div class="pip red"></div><div class="pip red"></div><div class="pip red"></div><div class="pip red"></div>
+            </div>
+          </div>
+        </li>
+
+        <!-- Alto Almirante: cilindros + 4x2 azul completo + cilindros -->
+        <li class="rank-item">
+          <span class="rank-name">Alto Almirante</span>
+          <div class="badge">
+            <div class="cylinders" style="margin-right:6px"><div class="cyl gold"></div><div class="cyl gold"></div></div>
+            <div class="pip-grid" style="grid-template-columns: repeat(4,1fr)">
+              <div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div>
+              <div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div>
+            </div>
+            <div class="cylinders" style="margin-left:6px"><div class="cyl gold"></div><div class="cyl gold"></div></div>
+          </div>
+        </li>
+
+        <!-- Moff: 4x2 azul+amarillo combinado -->
+        <li class="rank-item">
+          <span class="rank-name">Moff</span>
+          <div class="badge">
+            <div class="pip-grid" style="grid-template-columns: repeat(4,1fr)">
+              <div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div>
+              <div class="pip yellow"></div><div class="pip yellow"></div><div class="pip yellow"></div><div class="pip blue"></div>
+            </div>
+          </div>
+        </li>
+
+        <!-- Gobernador: cilindros + 4x2 azul+amarillo + cilindros -->
+        <li class="rank-item">
+          <span class="rank-name">Gobernador</span>
+          <div class="badge">
+            <div class="cylinders" style="margin-right:6px"><div class="cyl silver"></div><div class="cyl silver"></div></div>
+            <div class="pip-grid" style="grid-template-columns: repeat(4,1fr)">
+              <div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div>
+              <div class="pip yellow"></div><div class="pip yellow"></div><div class="pip yellow"></div><div class="pip yellow"></div>
+            </div>
+            <div class="cylinders" style="margin-left:6px"><div class="cyl silver"></div><div class="cyl silver"></div></div>
+          </div>
+        </li>
+
+        <!-- Gran Moff: cilindros + 4x2 rojo puro + cilindros -->
+        <li class="rank-item">
+          <span class="rank-name">Gran Moff</span>
+          <div class="badge">
+            <div class="cylinders" style="margin-right:6px"><div class="cyl gold"></div><div class="cyl gold"></div></div>
+            <div class="pip-grid" style="grid-template-columns: repeat(4,1fr)">
+              <div class="pip red"></div><div class="pip red"></div><div class="pip red"></div><div class="pip red"></div>
+              <div class="pip red"></div><div class="pip red"></div><div class="pip red"></div><div class="pip red"></div>
+            </div>
+            <div class="cylinders" style="margin-left:6px"><div class="cyl gold"></div><div class="cyl gold"></div></div>
+          </div>
+        </li>
+
+        <!-- ÉLITE IMPERIAL -->
+        <li class="category">Élite Imperial</li>
+
+        <!-- Director: cilindros + 4x2 azul+rojo -->
+        <li class="rank-item">
+          <span class="rank-name">Director</span>
+          <div class="badge">
+            <div class="cylinders" style="margin-right:6px"><div class="cyl silver"></div><div class="cyl silver"></div></div>
+            <div class="pip-grid" style="grid-template-columns: repeat(4,1fr)">
+              <div class="pip blue"></div><div class="pip blue"></div><div class="pip red"></div><div class="pip red"></div>
+              <div class="pip red"></div><div class="pip red"></div><div class="pip red"></div><div class="pip red"></div>
+            </div>
+            <div class="cylinders" style="margin-left:6px"><div class="cyl silver"></div><div class="cyl silver"></div></div>
+          </div>
+        </li>
+
+        <!-- Gran General: cilindros + 4x2 azul completo + cilindros -->
+        <li class="rank-item">
+          <span class="rank-name">Gran General</span>
+          <div class="badge">
+            <div class="cylinders" style="margin-right:6px"><div class="cyl gold"></div><div class="cyl gold"></div></div>
+            <div class="pip-grid" style="grid-template-columns: repeat(4,1fr)">
+              <div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div><div class="pip blue"></div>
+              <div class="pip blue"></div><div class="pip blue"></div><div class="pip yellow"></div><div class="pip yellow"></div>
+            </div>
+            <div class="cylinders" style="margin-left:6px"><div class="cyl gold"></div><div class="cyl gold"></div></div>
+          </div>
+        </li>
+
+        <!-- Gran Almirante: el más alto -->
+        <li class="rank-item" style="border: 1px solid rgba(192,57,43,0.4); background: rgba(192,57,43,0.05); border-radius:6px">
+          <span class="rank-name" style="color:#fff; font-weight:bold;">Gran Almirante</span>
+          <div class="badge">
+            <div class="cylinders" style="margin-right:6px"><div class="cyl gold"></div><div class="cyl gold"></div></div>
+            <div class="pip-grid" style="grid-template-columns: repeat(4,1fr)">
+              <div class="pip yellow"></div><div class="pip yellow"></div><div class="pip red"></div><div class="pip red"></div>
+              <div class="pip red"></div><div class="pip red"></div><div class="pip blue"></div><div class="pip blue"></div>
+            </div>
+            <div class="cylinders" style="margin-left:6px"><div class="cyl gold"></div><div class="cyl gold"></div></div>
+          </div>
+        </li>
+      </ul>
     </div>
   </section>
 

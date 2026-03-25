@@ -247,7 +247,7 @@ header h1, .topbar .site-title{
 
 /* Smaller artwork/icons inside timeline boxes or content blocks */
 .timeline-box img,
-.container section img {
+.container section img{
   display: block;
   margin: 8px auto;
   max-width: 120px;
@@ -263,6 +263,22 @@ header h1, .topbar .site-title{
   .timeline-box img,
   .container section img {
     max-width: 80px;
+  }
+}
+
+/* Larger image for Rangos del Imperio */
+.ranks-img {
+  display: block;
+  margin: 12px auto;
+  max-width: 900px; /* allow it to be bigger on desktop */
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 600px) {
+  .ranks-img {
+    max-width: 100%;
+    width: 100%;
   }
 }
 
