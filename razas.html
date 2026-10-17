@@ -1,243 +1,113 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Razas - Star Wars</title>
-
-<style>
-body{
-  margin:0;
-  font-family: Arial, sans-serif;
-  background: black;
-  color:white;
-  overflow-x:hidden;
-}
-
-/* Fondo de estrellas (mismo que index.html) */
-body::before {
-  content: "";
-  position: fixed;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(white 1px, transparent 1px);
-  background-size: 50px 50px;
-  opacity: 0.15;
-  animation: moveStars 60s linear infinite;
-  z-index: 0;
-}
-
-@keyframes moveStars {
-  from { transform: translateY(0); }
-  to { transform: translateY(-500px); }
-}
-
-/* HEADER */
-header{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  padding:12px 16px;
-  border-bottom:1px solid #333;
-  background:rgba(5, 7, 15, 0.95);
-  position:sticky;
-  top:0;
-  z-index:999;
-}
-
-header img{
-  width:55px;
-}
-
-header h1{
-  font-size:18px;
-  color:#ffe81f;
-  margin:0;
-}
-
-/* CONTAINER */
-.container{
-  max-width:1000px;
-  margin:auto;
-  padding:16px;
-}
-
-/* CARD */
-.race{
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.1);
-  border-radius:10px;
-  padding:15px;
-  margin-bottom:18px;
-}
-
-.race h2{
-  margin:0 0 10px 0;
-  color:#ffe81f;
-  font-size:18px;
-}
-
-/* TAG */
-.tag{
-  font-size:12px;
-  color:#888;
-  margin:0 0 10px 0;
-}
-
-/* TEXT */
-.race p{
-  color:#ccc;
-  font-size:14px;
-  line-height:1.4;
-}
-
-/* IMG BOX */
-.img-box{
-  width:220px;
-  height:220px;
-  margin:12px auto;
-  border:2px dashed #444;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-  border-radius:8px;
-}
-
-.img-box img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-/* ===== MOBILE FIX ===== */
-@media (max-width: 600px){
-
-  header img{
-    width:42px;
-  }
-
-  header h1{
-    font-size:15px;
-  }
-
-  .container{
-    padding:12px;
-  }
-
-  .race{
-    padding:12px;
-  }
-
-  .race h2{
-    font-size:16px;
-  }
-
-  .race p{
-    font-size:13px;
-  }
-
-  .img-box{
-    width:100%;
-    max-width:280px;
-    height:auto;
-    aspect-ratio:1/1;
-  }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Razas - Star Wars</title>
+  <link rel="icon" type="image/png" href="https://loodibee.com/wp-content/uploads/Star-Wars-transparent-logo-1024x1024.png">
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
 <header>
-<a href="index.html">
-  <img src="https://loodibee.com/wp-content/uploads/Star-Wars-transparent-logo-1024x1024.png">
-</a>
-<h1>Razas de la Galaxia</h1>
+  <a href="index.html" class="logo-link">
+    <img src="https://loodibee.com/wp-content/uploads/Star-Wars-transparent-logo-1024x1024.png" alt="Inicio">
+  </a>
+  <h1 class="site-title">Razas de la Galaxia</h1>
 </header>
 
 <div class="container">
 
-<div class="race">
-<h2>🧑 Humanos</h2>
-<p class="tag">La especie dominante de la galaxia</p>
-<p>Los humanos son la especie más extendida en la galaxia...</p>
-<div class="img-box">
-  <img src="https://lumiere-a.akamaihd.net/v1/images/628cdaa1dbbde50001de0bd3-image_6c311046.jpeg" alt="Humanos">
-</div>
-</div>
+  <div class="race">
+    <h2>🧑 Humanos</h2>
+    <span class="tag">La especie dominante de la galaxia</span>
+    <p>Los humanos son la especie más extendida en la galaxia, presentes en casi todos los sistemas políticos y culturales.</p>
+    <div class="img-box">
+      <img src="https://lumiere-a.akamaihd.net/v1/images/628cdaa1dbbde50001de0bd3-image_6c311046.jpeg" alt="Humanos">
+    </div>
+  </div>
 
-<div class="race">
-<h2>🟣 Twi’lek</h2>
-<p>Especie humanoide reconocida por sus lekku...</p>
-<div class="img-box">
-  <img src="https://lumiere-a.akamaihd.net/v1/images/twi-lek-main_93917d40.jpeg" alt="Twi'lek">
-</div>
-</div>
+  <div class="race">
+    <h2>🟣 Twi’lek</h2>
+    <span class="tag">Riloth / Borde Exterior</span>
+    <p>Especie humanoide reconocida por sus lekku (tentáculos craneales) y su rica diversidad cultural.</p>
+    <div class="img-box">
+      <img src="https://lumiere-a.akamaihd.net/v1/images/twi-lek-main_93917d40.jpeg" alt="Twi'lek">
+    </div>
+  </div>
 
-<div class="race">
-<h2>🟠 Togruta</h2>
-<p>Conocidos por sus montrals y lekku...</p>
-<div class="img-box">
-  <img src="https://www.lacasadeel.net/wp-content/uploads/2023/08/star-wars-ahsoka-jpg.webp" alt="Togruta">
-</div>
-</div>
+  <div class="race">
+    <h2>🟠 Togruta</h2>
+    <span class="tag">Shili</span>
+    <p>Conocidos por sus montrals y lekku con patrones distintivos, sensibles a la comunidad y su entorno.</p>
+    <div class="img-box">
+      <img src="https://www.lacasadeel.net/wp-content/uploads/2023/08/star-wars-ahsoka-jpg.webp" alt="Togruta">
+    </div>
+  </div>
 
-<div class="race">
-<h2>🟤 Wookiee</h2>
-<p>Gigantes peludos del planeta Kashyyyk...</p>
-<div class="img-box">
-  <img src="https://static0.gamerantimages.com/wordpress/wp-content/uploads/2022/12/wookies-main.jpeg" alt="Wookiee">
-</div>
-</div>
+  <div class="race">
+    <h2>🟤 Wookiee</h2>
+    <span class="tag">Kashyyyk</span>
+    <p>Gigantes peludos, leales y guerreros excepcionales provenientes del denso planeta Kashyyyk.</p>
+    <div class="img-box">
+      <img src="https://static0.gamerantimages.com/wordpress/wp-content/uploads/2022/12/wookies-main.jpeg" alt="Wookiee">
+    </div>
+  </div>
 
-<div class="race">
-<h2>⚫ Zabrak</h2>
-<p>Reconocibles por sus cuernos y tatuajes...</p>
-<div class="img-box">
-  <img src="https://mediaproxy.tvtropes.org/width/1200/https://static.tvtropes.org/pmwiki/pub/images/f7d6c430_631d_4f16_92a4_ddebe04a04e1.jpeg" alt="Zabrak">
-</div>
-</div>
+  <div class="race">
+    <h2>⚫ Zabrak</h2>
+    <span class="tag">Iridonia / Dathomir</span>
+    <p>Reconocibles por sus cuernos vestigiales y tatuajes faciales tradicionales, conocidos por su determinación.</p>
+    <div class="img-box">
+      <img src="https://mediaproxy.tvtropes.org/width/1200/https://static.tvtropes.org/pmwiki/pub/images/f7d6c430_631d_4f16_92a4_ddebe04a04e1.jpeg" alt="Zabrak">
+    </div>
+  </div>
 
-<div class="race">
-<h2>🟢 Hutt</h2>
-<p>Criaturas grandes similares a babosas...</p>
-<div class="img-box">
-  <img src="https://lumiere-a.akamaihd.net/v1/images/databank_hutt_01_169_5d0535d2.jpeg" alt="Hutt">
-</div>
-</div>
+  <div class="race">
+    <h2>🟢 Hutt</h2>
+    <span class="tag">Nal Hutta</span>
+    <p>Criaturas grandes de apariencia similar a babosas que controlan influyentes cárteles en el Borde Exterior.</p>
+    <div class="img-box">
+      <img src="https://lumiere-a.akamaihd.net/v1/images/databank_hutt_01_169_5d0535d2.jpeg" alt="Hutt">
+    </div>
+  </div>
 
-<div class="race">
-<h2>🔵 Chiss</h2>
-<p>Especie humanoide de piel azul...</p>
-<div class="img-box">
-  <img src="https://static0.srcdn.com/wordpress/wp-content/uploads/2020/01/Thrawn.jpeg" alt="Chiss">
-</div>
-</div>
+  <div class="race">
+    <h2>🔵 Chiss</h2>
+    <span class="tag">Csilla / Regiones Desconocidas</span>
+    <p>Especie humanoide de piel azul y ojos rojos fulgurantes, famosa por su intelecto táctico e insondable cultura.</p>
+    <div class="img-box">
+      <img src="https://static0.srcdn.com/wordpress/wp-content/uploads/2020/01/Thrawn.jpeg" alt="Chiss">
+    </div>
+  </div>
 
-<div class="race">
-<h2>🪖 Mandalorianos</h2>
-<p>No son una especie sino una cultura guerrera...</p>
-<div class="img-box">
-  <img src="https://hips.hearstapps.com/es.h-cdn.co/fotoes/images/noticias-cine/boba-fett-josh-trank-cancelacion/120275370-1-esl-ES/La-pelicula-sobre-Boba-Fett-de-Josh-Trank-se-cancelo-minutos-antes-de-confirmarse.jpg?crop=1.00xw:0.780xh;0,0.0806xh&resize=640:*" alt="Mandalorianos">
-</div>
-</div>
+  <div class="race">
+    <h2>🪖 Mandalorianos</h2>
+    <span class="tag">Mandalore</span>
+    <p>No son una especie sino una estricta cultura guerrera unida por el Credo y el metal Beskar.</p>
+    <div class="img-box">
+      <img src="https://hips.hearstapps.com/es.h-cdn.co/fotoes/images/noticias-cine/boba-fett-josh-trank-cancelacion/120275370-1-esl-ES/La-pelicula-sobre-Boba-Fett-de-Josh-Trank-se-cancelo-minutos-antes-de-confirmarse.jpg?crop=1.00xw:0.780xh;0,0.0806xh&resize=640:*" alt="Mandalorianos">
+    </div>
+  </div>
 
-<div class="race">
-<h2>🔴 Dathomirianos</h2>
-<p>Usuarios del lado oscuro de Dathomir...</p>
-<div class="img-box">
-  <img src="https://sm.ign.com/ign_latam/screenshot/default/asaj_mhe6.jpg" alt="Dathomirianos">
-</div>
-</div>
+  <div class="race">
+    <h2>🔴 Dathomirianos</h2>
+    <span class="tag">Dathomir</span>
+    <p>Usuarios místico-oscuros de la Fuerza en Dathomir, emparentados con las Hermanas de la Noche y Zabraks.</p>
+    <div class="img-box">
+      <img src="https://sm.ign.com/ign_latam/screenshot/default/asaj_mhe6.jpg" alt="Dathomirianos">
+    </div>
+  </div>
 
-<div class="race">
-<h2>🔵 Gungans</h2>
-<p>Especie anfibia de Naboo...</p>
-<div class="img-box">
-  <img src="https://starwarsreport.com/wp-content/uploads/2018/07/Jar-Jar-Binks-1170x550.png" alt="Gungans">
-</div>
-</div>
+  <div class="race">
+    <h2>🔵 Gungans</h2>
+    <span class="tag">Naboo</span>
+    <p>Especie anfibia nativa de los océanos y pantanos subterráneos del planeta Naboo.</p>
+    <div class="img-box">
+      <img src="https://starwarsreport.com/wp-content/uploads/2018/07/Jar-Jar-Binks-1170x550.png" alt="Gungans">
+    </div>
+  </div>
 
 </div>
 

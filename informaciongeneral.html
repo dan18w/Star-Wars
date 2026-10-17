@@ -4,119 +4,59 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Información General - Star Wars</title>
-
   <link rel="icon" type="image/png" href="https://loodibee.com/wp-content/uploads/Star-Wars-transparent-logo-1024x1024.png">
-
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: white;
-      background: black;
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(white 1px, transparent 1px);
-      background-size: 50px 50px;
-      opacity: 0.15;
-      animation: moveStars 60s linear infinite;
-    }
-
-    @keyframes moveStars {
-      from { transform: translateY(0); }
-      to { transform: translateY(-500px); }
-    }
-
-    .container {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      padding: 40px 20px;
-    }
-
-    .logo {
-      width: 180px;
-      margin-bottom: 10px;
-    }
-
-    h1 {
-      color: #ffe81f;
-      font-size: 30px;
-      margin-bottom: 30px;
-      letter-spacing: 2px;
-    }
-
-    .menu {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 15px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    .card {
-      display: block;
-      text-decoration: none;
-      color: white;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.2);
-      padding: 20px;
-      border-radius: 12px;
-      transition: 0.3s;
-      backdrop-filter: blur(6px);
-      font-size: 18px;
-    }
-
-    .card:hover {
-      transform: scale(1.05);
-      border-color: #ffe81f;
-      box-shadow: 0 0 20px #ffe81f33;
-    }
-
-    .back {
-      display: inline-block;
-      margin-bottom: 25px;
-      color: #ffe81f;
-      text-decoration: none;
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
-<div class="container">
-
-  <!-- LOGO COMO NAVEGACIÓN PRINCIPAL -->
-  <a href="index.html">
-    <img 
-      class="logo"
-      src="https://loodibee.com/wp-content/uploads/Star-Wars-transparent-logo-1024x1024.png"
-      alt="Inicio"
-    >
+<div class="topbar">
+  <a href="index.html" class="logo-link">
+    <img src="https://loodibee.com/wp-content/uploads/Star-Wars-transparent-logo-1024x1024.png" alt="Inicio" class="logo">
   </a>
+  <h1 class="site-title">Star Wars – Información General</h1>
+</div>
 
-  <h1>🏛️ Información General</h1>
+<div class="container" style="text-align: center;">
+
+  <h1 class="title">🏛️ Información General</h1>
 
   <div class="menu">
 
-    <a class="card" href="Imperio Galactico.html">🏛️ Imperio Galáctico</a>
+    <a class="card" href="Imperio Galactico.html">
+      <div class="title">🏛️ Imperio Galáctico</div>
+      <div class="desc">Régimen autoritario y estructura militar</div>
+    </a>
 
-    <a class="card" href="Republica Galactica.html">🏛️ República Galáctica</a>
+    <a class="card" href="Republica Galactica.html">
+      <div class="title">🏛️ República Galáctica</div>
+      <div class="desc">Democracia milenaria y Senado Galáctico</div>
+    </a>
 
-    <a class="card" href="Mandalore.html">⚔️ Mandalore</a>
+    <a class="card" href="Mandalore.html">
+      <div class="title">⚔️ Mandalore</div>
+      <div class="desc">Cultura guerrera y clanes mandalorianos</div>
+    </a>
 
-    <a class="card" href="Alianza Rebelde.html">🔥 Alianza Rebelde</a>
+    <a class="card" href="Alianza Rebelde.html">
+      <div class="title">🔥 Alianza Rebelde</div>
+      <div class="desc">Movimiento de resistencia por la libertad</div>
+    </a>
 
-    <a class="card" href="Nueva Republica.html">🟢 Nueva República</a>
+    <a class="card" href="Nueva Republica.html">
+      <div class="title">🟢 Nueva República</div>
+      <div class="desc">Restauración democrática pos-Imperio</div>
+    </a>
 
-    <a class="card" href="Orden Jedi.html">🧘 Orden Jedi</a>
+    <a class="card" href="Orden Jedi.html">
+      <div class="title">🧘 Orden Jedi</div>
+      <div class="desc">Guardianes de la paz y el Lado Luminoso</div>
+    </a>
 
-    <a class="card" href="Sith.html">⚡ Sith</a>
+    <a class="card" href="Sith.html">
+      <div class="title">⚡ Sith</div>
+      <div class="desc">Orden oscura y la búsqueda del poder absoluto</div>
+    </a>
 
   </div>
 
