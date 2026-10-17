@@ -4,32 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Infografía — Modulación Digital</title>
+<link rel="icon" type="image/png" href="https://loodibee.com/wp-content/uploads/Star-Wars-transparent-logo-1024x1024.png">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+
 <style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-  body {
-    background: #070b16;
-    color: #dde3f0;
-    font-family: 'Outfit', sans-serif;
-    padding: 18px;
-    min-width: 320px;
-  }
-
   .infographic {
     max-width: 1080px;
-    margin: 0 auto;
+    margin: 20px auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 14px;
+    gap: 18px;
   }
 
   /* ─── CARDS ─── */
   .card {
-    background: #0d1424;
-    border-radius: 14px;
-    padding: 20px 22px;
-    border: 1px solid rgba(255,255,255,0.07);
     position: relative;
     overflow: hidden;
     animation: rise 0.5s ease both;
@@ -63,7 +52,6 @@
 
   /* ─── TITLE SECTION ─── */
   .title-section {
-    background: linear-gradient(135deg, #0d1424 0%, #150d2a 50%, #0d1b24 100%);
     text-align: center;
     padding: 28px 30px 24px;
   }
@@ -79,14 +67,12 @@
     line-height: 1.1;
   }
 
-  .title-sub {
-    font-size: 0.72rem;
-    color: #FFFFFF;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    margin-top: 6px;
+  .title-sub2 {
+    font-size: 0.82rem;
+    color: #e2e8f0;
+    letter-spacing: 2px;
+    margin-top: 8px;
   }
-  
 
   .title-pills {
     display: flex;
@@ -97,105 +83,103 @@
   }
 
   .pill {
-    font-size: 0.68rem;
+    font-size: 0.7rem;
     font-weight: 600;
-    padding: 4px 13px;
+    padding: 4px 14px;
     border-radius: 20px;
-    letter-spacing: 0.5px;
+    backdrop-filter: blur(8px);
   }
 
-  .pill-c  { background: rgba(34,211,238,0.12); color: #22d3ee; border: 1px solid rgba(34,211,238,0.28); }
-  .pill-p  { background: rgba(168,85,247,0.12); color: #a855f7; border: 1px solid rgba(168,85,247,0.28); }
-  .pill-o  { background: rgba(249,115,22,0.12); color: #f97316; border: 1px solid rgba(249,115,22,0.28); }
-  .pill-g  { background: rgba(34,197,94,0.12);  color: #22c55e; border: 1px solid rgba(34,197,94,0.28); }
+  .pill-c  { background: rgba(34,211,238,0.12); color: #22d3ee; border: 1px solid rgba(34,211,238,0.3); }
+  .pill-p  { background: rgba(168,85,247,0.12); color: #a855f7; border: 1px solid rgba(168,85,247,0.3); }
+  .pill-o  { background: rgba(249,115,22,0.12); color: #f97316; border: 1px solid rgba(249,115,22,0.3); }
+  .pill-g  { background: rgba(34,197,94,0.12);  color: #22c55e; border: 1px solid rgba(34,197,94,0.3); }
 
   /* ─── SECTION HEADERS ─── */
   .sec-label {
-    font-size: 0.6rem;
+    font-size: 0.65rem;
     text-transform: uppercase;
     letter-spacing: 2.5px;
-    color: #3d4f6e;
-    margin-bottom: 3px;
+    color: #94a3b8;
+    margin-bottom: 4px;
   }
 
   .sec-title {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.45rem;
+    font-size: 1.55rem;
     letter-spacing: 2px;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     line-height: 1;
   }
 
   /* ─── CARD BODY LAYOUT ─── */
   .card-body {
     display: flex;
-    gap: 14px;
+    gap: 16px;
     align-items: flex-start;
   }
 
   .card-text { flex: 1; min-width: 0; }
 
-  /* ─── TEXT COMPONENTS ─── */
   .def {
-    font-size: 0.78rem;
-    line-height: 1.55;
-    color: #8899b8;
-    margin-bottom: 9px;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: #cbd5e1;
+    margin-bottom: 10px;
   }
-
-  .def strong { color: #cdd6e8; }
 
   .badges {
     display: flex;
     flex-wrap: wrap;
-    gap: 5px;
-    margin-bottom: 9px;
+    gap: 6px;
+    margin-bottom: 10px;
   }
 
   .badge {
-    font-size: 0.65rem;
+    font-size: 0.68rem;
     font-weight: 600;
-    padding: 3px 9px;
+    padding: 3px 10px;
     border-radius: 20px;
-    letter-spacing: 0.3px;
+    backdrop-filter: blur(6px);
   }
 
-  .bdg-c { background: rgba(34,211,238,0.12); color: #22d3ee; border: 1px solid rgba(34,211,238,0.25); }
-  .bdg-p { background: rgba(168,85,247,0.12); color: #a855f7; border: 1px solid rgba(168,85,247,0.25); }
-  .bdg-o { background: rgba(249,115,22,0.12); color: #f97316; border: 1px solid rgba(249,115,22,0.25); }
-  .bdg-g { background: rgba(34,197,94,0.12);  color: #22c55e; border: 1px solid rgba(34,197,94,0.25); }
-  .bdg-k { background: rgba(255,255,255,0.05); color: #64748b; border: 1px solid rgba(255,255,255,0.08); }
+  .bdg-c { background: rgba(34,211,238,0.15); color: #22d3ee; border: 1px solid rgba(34,211,238,0.3); }
+  .bdg-p { background: rgba(168,85,247,0.15); color: #a855f7; border: 1px solid rgba(168,85,247,0.3); }
+  .bdg-o { background: rgba(249,115,22,0.15); color: #f97316; border: 1px solid rgba(249,115,22,0.3); }
+  .bdg-g { background: rgba(34,197,94,0.15);  color: #22c55e; border: 1px solid rgba(34,197,94,0.3); }
+  .bdg-k { background: rgba(255,255,255,0.06); color: #cbd5e1; border: 1px solid rgba(255,255,255,0.12); }
 
   .clist {
     list-style: none;
-    font-size: 0.75rem;
-    color: #7788a8;
-    margin-bottom: 8px;
+    font-size: 0.82rem;
+    color: #94a3b8;
+    margin-bottom: 10px;
   }
 
   .clist li {
-    padding: 2.5px 0 2.5px 12px;
+    padding: 3px 0 3px 14px;
     position: relative;
-    line-height: 1.4;
+    line-height: 1.5;
   }
 
   .clist li::before {
     content: '▸';
     position: absolute;
     left: 0;
-    font-size: 0.62rem;
-    top: 4px;
+    font-size: 0.7rem;
+    top: 3px;
   }
 
   .fbox {
-    border-radius: 7px;
-    padding: 7px 11px;
+    border-radius: 10px;
+    padding: 8px 12px;
     font-family: 'Courier New', monospace;
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     line-height: 1.5;
-    background: rgba(0,0,0,0.35);
-    margin: 7px 0;
-    border-left: 2.5px solid;
+    background: rgba(0,0,0,0.4);
+    margin: 8px 0;
+    border-left: 3px solid;
+    backdrop-filter: blur(8px);
   }
 
   .fbox-c { border-color: #22d3ee; color: #22d3ee; }
@@ -208,160 +192,108 @@
   .apps {
     display: flex;
     flex-wrap: wrap;
-    gap: 4px;
-    margin-top: 5px;
+    gap: 6px;
+    margin-top: 6px;
   }
 
   .app {
-    font-size: 0.62rem;
-    padding: 2px 8px;
-    border-radius: 10px;
-    background: rgba(255,255,255,0.04);
-    color: #4a607a;
-    border: 1px solid rgba(255,255,255,0.06);
+    font-size: 0.68rem;
+    padding: 3px 9px;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.05);
+    color: #cbd5e1;
+    border: 1px solid rgba(255,255,255,0.1);
   }
 
-  /* ─── SVG DIAGRAMS ─── */
   .diagram { flex-shrink: 0; }
 
   .svg-wrap {
-    background: rgba(0,0,0,0.3);
-    border-radius: 10px;
+    background: rgba(0,0,0,0.35);
+    border-radius: 12px;
     display: block;
+    border: 1px solid rgba(255,255,255,0.08);
   }
 
-  /* ─── BAUDIOS SECTION ─── */
   .baud-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap: 12px;
+    gap: 14px;
     margin-top: 10px;
-  }
-
-  .baud-box {
-    background: rgba(0,0,0,0.25);
-    border-radius: 10px;
-    padding: 14px;
-    border: 1px solid rgba(255,255,255,0.05);
   }
 
   .big-n {
     font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.2rem;
+    font-size: 2.4rem;
     line-height: 1;
     color: #ec4899;
     margin: 4px 0 6px;
   }
 
-  /* ─── TABLE ─── */
   .tbl {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     margin-top: 8px;
   }
 
   .tbl th {
-    padding: 5px 8px;
+    padding: 6px 8px;
     text-align: left;
-    color: #3d4f6e;
-    font-size: 0.6rem;
+    color: #94a3b8;
+    font-size: 0.65rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
   }
 
   .tbl td {
-    padding: 6px 8px;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-    color: #8899b8;
+    padding: 7px 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    color: #cbd5e1;
   }
-
-  .tbl tr:last-child td { border-bottom: none; }
-
-  /* ─── EJERCICIO SECTION ─── */
-  .ej-cols {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 12px;
-    margin-top: 10px;
-  }
-
-  .ej-box {
-    border-radius: 10px;
-    padding: 14px;
-    text-align: center;
-  }
-
-  .ej-c  { background: rgba(34,211,238,0.07); border: 1px solid rgba(34,211,238,0.18); }
-  .ej-o  { background: rgba(249,115,22,0.07);  border: 1px solid rgba(249,115,22,0.18); }
-  .ej-g  { background: rgba(34,197,94,0.07);   border: 1px solid rgba(34,197,94,0.18); }
-
-  .ej-name {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.3rem;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-  }
-
-  .ej-row {
-    font-size: 0.75rem;
-    color: #7788a8;
-    padding: 4px 0;
-    border-bottom: 1px solid rgba(255,255,255,0.04);
-    display: flex;
-    justify-content: space-between;
-    gap: 6px;
-    text-align: left;
-  }
-
-  .ej-row:last-child { border-bottom: none; }
-  .ej-val { font-weight: 700; color: #cdd6e8; font-size: 0.78rem; }
 
   .shannon-box {
-    margin-top: 13px;
-    background: rgba(234,179,8,0.06);
-    border: 1px solid rgba(234,179,8,0.18);
-    border-radius: 10px;
-    padding: 12px 16px;
+    margin-top: 14px;
+    background: rgba(234,179,8,0.08);
+    border: 1px solid rgba(234,179,8,0.25);
+    border-radius: 14px;
+    padding: 14px 18px;
     display: flex;
     gap: 18px;
     align-items: center;
     flex-wrap: wrap;
+    backdrop-filter: blur(10px);
   }
 
-  /* ─── ANIMATIONS ─── */
   @keyframes rise {
-    from { opacity: 0; transform: translateY(8px); }
+    from { opacity: 0; transform: translateY(12px); }
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  .card:nth-child(1) { animation-delay: 0s;    }
-  .card:nth-child(2) { animation-delay: 0.08s; }
-  .card:nth-child(3) { animation-delay: 0.12s; }
-  .card:nth-child(4) { animation-delay: 0.16s; }
-  .card:nth-child(5) { animation-delay: 0.20s; }
-  .card:nth-child(6) { animation-delay: 0.25s; }
-  .card:nth-child(7) { animation-delay: 0.30s; }
-
-  /* ─── RESPONSIVE ─── */
   @media (max-width: 680px) {
     .infographic { grid-template-columns: 1fr; }
     .full { grid-column: 1; }
     .card-body { flex-direction: column; }
-    .baud-grid, .ej-cols { grid-template-columns: 1fr; }
+    .baud-grid { grid-template-columns: 1fr; }
     .diagram { align-self: center; }
   }
 </style>
 </head>
 <body>
 
+<header>
+  <a href="index.html" class="logo-link">
+    <img src="https://loodibee.com/wp-content/uploads/Star-Wars-transparent-logo-1024x1024.png" alt="Inicio">
+  </a>
+  <h1 class="site-title">Infografía — Modulación Digital</h1>
+</header>
+
 <div class="infographic">
 
   <!-- ══════════════════════ 1. TÍTULO ══════════════════════ -->
   <div class="card t-title title-section full">
     <div class="title-main">MODULACIÓN DIGITAL</div>
-    <div class="title-sub2">  <strong> Daniel Ávila, Stevan Camargo, Moises Rodriguez, Carlos Utria   </strong></div>
+    <div class="title-sub2">Daniel Ávila, Stevan Camargo, Moises Rodriguez, Carlos Utria</div>
     <div class="title-pills">
       <span class="pill pill-c">QPSK — 2 bits/símbolo</span>
       <span class="pill pill-p">QAM — Amplitud + Fase</span>
@@ -381,7 +313,6 @@
           Los bits de entrada se agrupan en <strong>dibits</strong>; cada par produce una de
           <strong>4 fases de salida</strong> (+45°, +135°, −45°, −135°).
           La amplitud es <strong>constante</strong>; toda la información va en la fase.
-          Equivale a dos sistemas BPSK independientes (canal I y canal Q) desfasados 90°.
         </p>
         <div class="badges">
           <span class="badge bdg-c">4 símbolos = 2²</span>
@@ -389,11 +320,10 @@
           <span class="badge bdg-k">Separación: 90°</span>
         </div>
         <ul class="clist">
-          <li>Canal <strong>I</strong> (In-Phase) + canal <strong>Q</strong> (Quadrature)</li>
+          <li>Canal <strong>I</strong> (In-Phase) + canal <strong>Q</strong> (Quadrature) desfasados 90°</li>
           <li>Misma performance BER que BPSK con <strong>doble eficiencia</strong></li>
           <li>Tolerancia a desfase: <span class="c-qpsk">±45°</span> sin error</li>
           <li>Eficiencia espectral: <span class="c-qpsk">2 bits/s/Hz</span></li>
-          <li>Diagrama de constelación: 4 puntos equidistantes en círculo</li>
         </ul>
         <div class="fbox fbox-c">
           BW mínimo = fb / 2&nbsp;&nbsp;|&nbsp;&nbsp;baud = fb / 2
@@ -409,39 +339,26 @@
       <!-- SVG: QPSK Constellation -->
       <div class="diagram">
         <svg class="svg-wrap" width="155" height="162" viewBox="0 0 155 162">
-          <!-- grid lines subtle -->
           <line x1="20" y1="78" x2="135" y2="78" stroke="#141e33" stroke-width="1"/>
           <line x1="78" y1="20" x2="78" y2="135" stroke="#141e33" stroke-width="1"/>
-          <!-- Unit circle -->
           <circle cx="78" cy="78" r="52" fill="none" stroke="#1a2840" stroke-width="1" stroke-dasharray="3,4"/>
-          <!-- Phasors -->
           <line x1="78" y1="78" x2="115" y2="41" stroke="rgba(34,211,238,0.25)" stroke-width="1.2"/>
           <line x1="78" y1="78" x2="41"  y2="41" stroke="rgba(34,211,238,0.25)" stroke-width="1.2"/>
           <line x1="78" y1="78" x2="41"  y2="115" stroke="rgba(34,211,238,0.25)" stroke-width="1.2"/>
           <line x1="78" y1="78" x2="115" y2="115" stroke="rgba(34,211,238,0.25)" stroke-width="1.2"/>
-          <!-- Axes (on top) -->
           <line x1="10" y1="78" x2="146" y2="78" stroke="#223250" stroke-width="1.5"/>
           <line x1="78" y1="10" x2="78" y2="146" stroke="#223250" stroke-width="1.5"/>
-          <text x="140" y="82" fill="#3d5070" font-size="9" font-family="Outfit">I</text>
-          <text x="82"  y="16" fill="#3d5070" font-size="9" font-family="Outfit">Q</text>
-          <!-- Points QPSK: 45°,135°,225°,315° at r=52 -->
-          <!-- cos45°=sin45°≈0.707 → 52*0.707≈37 -->
-          <circle cx="115" cy="41"  r="7" fill="#22d3ee" filter="url(#glow-c)"/>
-          <circle cx="41"  cy="41"  r="7" fill="#22d3ee" filter="url(#glow-c)"/>
-          <circle cx="41"  cy="115" r="7" fill="#22d3ee" filter="url(#glow-c)"/>
-          <circle cx="115" cy="115" r="7" fill="#22d3ee" filter="url(#glow-c)"/>
-          <!-- Labels -->
+          <text x="140" y="82" fill="#94a3b8" font-size="9" font-family="Outfit">I</text>
+          <text x="82"  y="16" fill="#94a3b8" font-size="9" font-family="Outfit">Q</text>
+          <circle cx="115" cy="41"  r="7" fill="#22d3ee"/>
+          <circle cx="41"  cy="41"  r="7" fill="#22d3ee"/>
+          <circle cx="41"  cy="115" r="7" fill="#22d3ee"/>
+          <circle cx="115" cy="115" r="7" fill="#22d3ee"/>
           <text x="120" y="38"  fill="#22d3ee" font-size="9" font-weight="600" font-family="Outfit">11</text>
           <text x="23"  y="38"  fill="#22d3ee" font-size="9" font-weight="600" font-family="Outfit">10</text>
           <text x="23"  y="128" fill="#22d3ee" font-size="9" font-weight="600" font-family="Outfit">00</text>
           <text x="120" y="128" fill="#22d3ee" font-size="9" font-weight="600" font-family="Outfit">01</text>
-          <!-- Caption -->
-          <text x="78" y="157" fill="#3d5070" font-size="8" text-anchor="middle" font-family="Outfit">Constelación QPSK</text>
-          <!-- Glow filter -->
-          <defs>
-            <filter id="glow-c"><feGaussianBlur stdDeviation="2.5" result="blur"/>
-              <feComposite in="SourceGraphic" in2="blur" operator="over"/></filter>
-          </defs>
+          <text x="78" y="157" fill="#94a3b8" font-size="8" text-anchor="middle" font-family="Outfit">Constelación QPSK</text>
         </svg>
       </div>
     </div>
@@ -455,20 +372,15 @@
       <div class="card-text">
         <p class="def">
           <strong>Modulación de Amplitud en Cuadratura.</strong> Varía <strong>simultáneamente</strong>
-          la amplitud y la fase de la portadora de acuerdo con la señal digital.
-          Combina dos portadoras ortogonales (I y Q), desfasadas 90°, cada una modulada
-          en amplitud. Es el esquema de mayor eficiencia espectral en comunicaciones digitales.
+          la amplitud y la fase de la portadora. Combina dos portadoras ortogonales (I y Q), desfasadas 90°.
         </p>
-        <div class="fbox fbox-p" style="font-size:0.68rem;">
-          v(t) = I·cos(2πf<sub>c</sub>t) − Q·sin(2πf<sub>c</sub>t)<br/>
-          <span style="color:#64748b">Amplitud Y fase varían → más símbolos</span>
+        <div class="fbox fbox-p" style="font-size:0.7rem;">
+          v(t) = I·cos(2πf<sub>c</sub>t) − Q·sin(2πf<sub>c</sub>t)
         </div>
         <ul class="clist">
           <li>Combina <strong>ASK + PSK</strong> en componentes ortogonales</li>
-          <li>Canal <strong>I</strong> (In-Phase) + canal <strong>Q</strong> (Quadrature, 90°)</li>
           <li>Los símbolos forman una <span class="c-qam">grilla rectangular</span> en el plano IQ</li>
           <li>Superior a PSK para M &gt; 4 en distancia entre puntos</li>
-          <li>Usado en cable TV, ADSL, LTE, Wi-Fi y 5G</li>
         </ul>
         <div class="sec-label" style="margin-top:6px;">Variantes</div>
         <div class="badges" style="margin-top:4px;">
@@ -476,39 +388,27 @@
           <span class="badge bdg-o">16-QAM</span>
           <span class="badge bdg-g">64-QAM</span>
           <span class="badge bdg-p">256-QAM</span>
-          <span class="badge bdg-k">1024-QAM</span>
         </div>
       </div>
 
       <!-- SVG: IQ concept -->
       <div class="diagram">
         <svg class="svg-wrap" width="155" height="162" viewBox="0 0 155 162">
-          <!-- Axes -->
           <line x1="10" y1="78" x2="146" y2="78" stroke="#223250" stroke-width="1.5"/>
           <line x1="78" y1="10" x2="78" y2="146" stroke="#223250" stroke-width="1.5"/>
-          <text x="140" y="82" fill="#3d5070" font-size="9" font-family="Outfit">I</text>
-          <text x="82"  y="16" fill="#3d5070" font-size="9" font-family="Outfit">Q</text>
-          <!-- Amplitude rings -->
+          <text x="140" y="82" fill="#94a3b8" font-size="9" font-family="Outfit">I</text>
+          <text x="82"  y="16" fill="#94a3b8" font-size="9" font-family="Outfit">Q</text>
           <circle cx="78" cy="78" r="36" fill="none" stroke="#a855f7" stroke-width="0.8" stroke-dasharray="2,4" opacity="0.5"/>
           <circle cx="78" cy="78" r="55" fill="none" stroke="#7c3aed" stroke-width="0.8" stroke-dasharray="2,4" opacity="0.45"/>
-          <!-- Inner ring points (4): ±36*0.707=±25 -->
-          <circle cx="103" cy="53"  r="5.5" fill="#a855f7" opacity="0.85"/>
-          <circle cx="53"  cy="53"  r="5.5" fill="#a855f7" opacity="0.85"/>
-          <circle cx="53"  cy="103" r="5.5" fill="#a855f7" opacity="0.85"/>
-          <circle cx="103" cy="103" r="5.5" fill="#a855f7" opacity="0.85"/>
-          <!-- Outer ring points (4): on axes at r=55 -->
-          <circle cx="133" cy="78"  r="5.5" fill="#7c3aed" opacity="0.9"/>
-          <circle cx="23"  cy="78"  r="5.5" fill="#7c3aed" opacity="0.9"/>
-          <circle cx="78"  cy="23"  r="5.5" fill="#7c3aed" opacity="0.9"/>
-          <circle cx="78"  cy="133" r="5.5" fill="#7c3aed" opacity="0.9"/>
-          <!-- Labels -->
-          <text x="60" y="44" fill="#a855f7" font-size="8" font-family="Outfit">A₁</text>
-          <text x="120" y="72" fill="#7c3aed" font-size="8" font-family="Outfit">A₂</text>
-          <!-- Phase arc -->
-          <path d="M 78 78 L 103 53" stroke="#a855f7" stroke-width="1" stroke-dasharray="2,2" opacity="0.6"/>
-          <text x="82" y="64" fill="#a855f7" font-size="7" font-family="Outfit">φ</text>
-          <!-- Caption -->
-          <text x="78" y="157" fill="#3d5070" font-size="8" text-anchor="middle" font-family="Outfit">Plano I-Q (Amplitud + Fase)</text>
+          <circle cx="103" cy="53"  r="5.5" fill="#a855f7"/>
+          <circle cx="53"  cy="53"  r="5.5" fill="#a855f7"/>
+          <circle cx="53"  cy="103" r="5.5" fill="#a855f7"/>
+          <circle cx="103" cy="103" r="5.5" fill="#a855f7"/>
+          <circle cx="133" cy="78"  r="5.5" fill="#7c3aed"/>
+          <circle cx="23"  cy="78"  r="5.5" fill="#7c3aed"/>
+          <circle cx="78"  cy="23"  r="5.5" fill="#7c3aed"/>
+          <circle cx="78"  cy="133" r="5.5" fill="#7c3aed"/>
+          <text x="78" y="157" fill="#94a3b8" font-size="8" text-anchor="middle" font-family="Outfit">Plano I-Q (Amplitud + Fase)</text>
         </svg>
       </div>
     </div>
@@ -521,10 +421,8 @@
     <div class="card-body">
       <div class="card-text">
         <p class="def">
-          <strong>16-QAM (Modulación de amplitud en cuadratura de 16 estados).</strong>
           Utiliza <strong>4 valores I y 4 valores Q</strong>, produciendo
-          <strong>4 bits por símbolo</strong> (2⁴ = 16). Los datos se envían en
-          dos bits simultáneos por canal; cada canal puede tomar 2 fases y 2 amplitudes.
+          <strong>4 bits por símbolo</strong> (2⁴ = 16) en cuadrícula rectangular uniforme.
         </p>
         <div class="badges">
           <span class="badge bdg-o">16 símbolos = 2⁴</span>
@@ -535,16 +433,13 @@
           <li>Cuatro niveles en I × cuatro niveles en Q</li>
           <li>Eficiencia espectral: <span class="c-q16">4 bits/s/Hz</span></li>
           <li>BW mínimo: <span class="c-q16">fb / 4</span></li>
-          <li>Mayor eficiencia que QPSK, mayor sensibilidad al ruido</li>
-          <li>Puntos de constelación en cuadrícula rectangular uniforme</li>
         </ul>
         <div class="fbox fbox-o">
-          9,600 bps @ 2,400 baudios<br/>
-          baud = fb / 4
+          9,600 bps @ 2,400 baudios | baud = fb / 4
         </div>
         <div class="sec-label" style="margin-top:5px;">Aplicaciones</div>
         <div class="apps">
-          <span class="app">DOCSIS (Cable)</span><span class="app">4G LTE</span>
+          <span class="app">DOCSIS</span><span class="app">4G LTE</span>
           <span class="app">ADSL</span><span class="app">Wi-Fi</span>
         </div>
       </div>
@@ -552,36 +447,25 @@
       <!-- SVG: 16-QAM Constellation 4×4 -->
       <div class="diagram">
         <svg class="svg-wrap" width="155" height="162" viewBox="0 0 155 162">
-          <!-- Axes -->
           <line x1="10" y1="78" x2="146" y2="78" stroke="#223250" stroke-width="1.5"/>
           <line x1="78" y1="10" x2="78" y2="146" stroke="#223250" stroke-width="1.5"/>
-          <text x="140" y="82" fill="#3d5070" font-size="9" font-family="Outfit">I</text>
-          <text x="82"  y="16" fill="#3d5070" font-size="9" font-family="Outfit">Q</text>
-          <!-- 16-QAM: 4×4 grid, spacing=30, center=78 -->
-          <!-- I positions: 78-45, 78-15, 78+15, 78+45 = 33, 63, 93, 123 -->
-          <!-- Q positions same (inverted in SVG): 78-45, 78-15, 78+15, 78+45 = 33, 63, 93, 123 -->
-          <!-- Row Q=+45 → y=33 -->
-          <circle cx="33"  cy="33"  r="5.5" fill="#f97316" opacity="0.9"/>
-          <circle cx="63"  cy="33"  r="5.5" fill="#f97316" opacity="0.9"/>
-          <circle cx="93"  cy="33"  r="5.5" fill="#f97316" opacity="0.9"/>
-          <circle cx="123" cy="33"  r="5.5" fill="#f97316" opacity="0.9"/>
-          <!-- Row Q=+15 → y=63 -->
-          <circle cx="33"  cy="63"  r="5.5" fill="#f97316" opacity="0.9"/>
-          <circle cx="63"  cy="63"  r="5.5" fill="#f97316" opacity="0.9"/>
-          <circle cx="93"  cy="63"  r="5.5" fill="#f97316" opacity="0.9"/>
-          <circle cx="123" cy="63"  r="5.5" fill="#f97316" opacity="0.9"/>
-          <!-- Row Q=-15 → y=93 -->
-          <circle cx="33"  cy="93"  r="5.5" fill="#f97316" opacity="0.9"/>
-          <circle cx="63"  cy="93"  r="5.5" fill="#f97316" opacity="0.9"/>
-          <circle cx="93"  cy="93"  r="5.5" fill="#f97316" opacity="0.9"/>
-          <circle cx="123" cy="93"  r="5.5" fill="#f97316" opacity="0.9"/>
-          <!-- Row Q=-45 → y=123 -->
-          <circle cx="33"  cy="123" r="5.5" fill="#f97316" opacity="0.9"/>
-          <circle cx="63"  cy="123" r="5.5" fill="#f97316" opacity="0.9"/>
-          <circle cx="93"  cy="123" r="5.5" fill="#f97316" opacity="0.9"/>
-          <circle cx="123" cy="123" r="5.5" fill="#f97316" opacity="0.9"/>
-          <!-- Caption -->
-          <text x="78" y="157" fill="#3d5070" font-size="8" text-anchor="middle" font-family="Outfit">Constelación 16-QAM (4×4)</text>
+          <circle cx="33"  cy="33"  r="5.5" fill="#f97316"/>
+          <circle cx="63"  cy="33"  r="5.5" fill="#f97316"/>
+          <circle cx="93"  cy="33"  r="5.5" fill="#f97316"/>
+          <circle cx="123" cy="33"  r="5.5" fill="#f97316"/>
+          <circle cx="33"  cy="63"  r="5.5" fill="#f97316"/>
+          <circle cx="63"  cy="63"  r="5.5" fill="#f97316"/>
+          <circle cx="93"  cy="63"  r="5.5" fill="#f97316"/>
+          <circle cx="123" cy="63"  r="5.5" fill="#f97316"/>
+          <circle cx="33"  cy="93"  r="5.5" fill="#f97316"/>
+          <circle cx="63"  cy="93"  r="5.5" fill="#f97316"/>
+          <circle cx="93"  cy="93"  r="5.5" fill="#f97316"/>
+          <circle cx="123" cy="93"  r="5.5" fill="#f97316"/>
+          <circle cx="33"  cy="123" r="5.5" fill="#f97316"/>
+          <circle cx="63"  cy="123" r="5.5" fill="#f97316"/>
+          <circle cx="93"  cy="123" r="5.5" fill="#f97316"/>
+          <circle cx="123" cy="123" r="5.5" fill="#f97316"/>
+          <text x="78" y="157" fill="#94a3b8" font-size="8" text-anchor="middle" font-family="Outfit">Constelación 16-QAM (4×4)</text>
         </svg>
       </div>
     </div>
@@ -594,10 +478,7 @@
     <div class="card-body">
       <div class="card-text">
         <p class="def">
-          <strong>64-QAM.</strong> Los datos se agrupan en <strong>grupos de 6 bits</strong>
-          (sextuples). Usa <strong>8 niveles en I y 8 niveles en Q</strong>, generando
-          64 símbolos posibles (2⁶ = 64). Alta eficiencia espectral a costa de mayor
-          sensibilidad al ruido, por lo que requiere una SNR elevada.
+          Los datos se agrupan en <strong>grupos de 6 bits</strong> (2⁶ = 64). Usa 8 niveles en I y 8 niveles en Q. Alta eficiencia espectral.
         </p>
         <div class="badges">
           <span class="badge bdg-g">64 símbolos = 2⁶</span>
@@ -608,12 +489,9 @@
           <li>Ocho niveles en I × ocho niveles en Q</li>
           <li>Eficiencia espectral: <span class="c-q64">6 bits/s/Hz</span></li>
           <li>BW mínimo: <span class="c-q64">fb / 6</span></li>
-          <li>Puntos de constelación muy cercanos → alta sensibilidad al ruido</li>
-          <li>Requiere excelente relación señal a ruido (SNR alta)</li>
         </ul>
         <div class="fbox fbox-g">
-          14,400 bps @ 2,400 baudios<br/>
-          baud = fb / 6
+          14,400 bps @ 2,400 baudios | baud = fb / 6
         </div>
         <div class="sec-label" style="margin-top:5px;">Aplicaciones</div>
         <div class="apps">
@@ -625,88 +503,17 @@
       <!-- SVG: 64-QAM Constellation 8×8 -->
       <div class="diagram">
         <svg class="svg-wrap" width="155" height="162" viewBox="0 0 155 162">
-          <!-- Axes on top -->
-          <!-- 64-QAM: 8×8 grid, spacing=17, center=78 -->
-          <!-- I/Q offsets: -59.5,-42.5,-25.5,-8.5,8.5,25.5,42.5,59.5 → 18.5,35.5,52.5,69.5,86.5,103.5,120.5,137.5 -->
-          <!-- Approximate with spacing 17: 19,36,53,70,87,104,121,138 -->
           <line x1="10"  y1="78" x2="146" y2="78" stroke="#223250" stroke-width="1.3"/>
           <line x1="78"  y1="10" x2="78" y2="146" stroke="#223250" stroke-width="1.3"/>
-          <text x="140" y="82" fill="#3d5070" font-size="9" font-family="Outfit">I</text>
-          <text x="82"  y="16" fill="#3d5070" font-size="9" font-family="Outfit">Q</text>
-          <!-- Row 1 y=19 -->
-          <circle cx="19"  cy="19"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="36"  cy="19"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="53"  cy="19"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="70"  cy="19"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="87"  cy="19"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="104" cy="19"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="121" cy="19"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="138" cy="19"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <!-- Row 2 y=36 -->
-          <circle cx="19"  cy="36"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="36"  cy="36"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="53"  cy="36"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="70"  cy="36"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="87"  cy="36"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="104" cy="36"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="121" cy="36"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="138" cy="36"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <!-- Row 3 y=53 -->
-          <circle cx="19"  cy="53"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="36"  cy="53"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="53"  cy="53"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="70"  cy="53"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="87"  cy="53"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="104" cy="53"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="121" cy="53"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="138" cy="53"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <!-- Row 4 y=70 -->
-          <circle cx="19"  cy="70"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="36"  cy="70"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="53"  cy="70"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="70"  cy="70"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="87"  cy="70"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="104" cy="70"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="121" cy="70"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="138" cy="70"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <!-- Row 5 y=87 -->
-          <circle cx="19"  cy="87"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="36"  cy="87"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="53"  cy="87"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="70"  cy="87"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="87"  cy="87"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="104" cy="87"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="121" cy="87"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="138" cy="87"  r="3.5" fill="#22c55e" opacity="0.88"/>
-          <!-- Row 6 y=104 -->
-          <circle cx="19"  cy="104" r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="36"  cy="104" r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="53"  cy="104" r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="70"  cy="104" r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="87"  cy="104" r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="104" cy="104" r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="121" cy="104" r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="138" cy="104" r="3.5" fill="#22c55e" opacity="0.88"/>
-          <!-- Row 7 y=121 -->
-          <circle cx="19"  cy="121" r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="36"  cy="121" r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="53"  cy="121" r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="70"  cy="121" r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="87"  cy="121" r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="104" cy="121" r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="121" cy="121" r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="138" cy="121" r="3.5" fill="#22c55e" opacity="0.88"/>
-          <!-- Row 8 y=138 -->
-          <circle cx="19"  cy="138" r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="36"  cy="138" r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="53"  cy="138" r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="70"  cy="138" r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="87"  cy="138" r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="104" cy="138" r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="121" cy="138" r="3.5" fill="#22c55e" opacity="0.88"/>
-          <circle cx="138" cy="138" r="3.5" fill="#22c55e" opacity="0.88"/>
-          <!-- Caption -->
-          <text x="78" y="157" fill="#3d5070" font-size="8" text-anchor="middle" font-family="Outfit">Constelación 64-QAM (8×8)</text>
+          <circle cx="19" cy="19" r="3.5" fill="#22c55e"/><circle cx="36" cy="19" r="3.5" fill="#22c55e"/><circle cx="53" cy="19" r="3.5" fill="#22c55e"/><circle cx="70" cy="19" r="3.5" fill="#22c55e"/><circle cx="87" cy="19" r="3.5" fill="#22c55e"/><circle cx="104" cy="19" r="3.5" fill="#22c55e"/><circle cx="121" cy="19" r="3.5" fill="#22c55e"/><circle cx="138" cy="19" r="3.5" fill="#22c55e"/>
+          <circle cx="19" cy="36" r="3.5" fill="#22c55e"/><circle cx="36" cy="36" r="3.5" fill="#22c55e"/><circle cx="53" cy="36" r="3.5" fill="#22c55e"/><circle cx="70" cy="36" r="3.5" fill="#22c55e"/><circle cx="87" cy="36" r="3.5" fill="#22c55e"/><circle cx="104" cy="36" r="3.5" fill="#22c55e"/><circle cx="121" cy="36" r="3.5" fill="#22c55e"/><circle cx="138" cy="36" r="3.5" fill="#22c55e"/>
+          <circle cx="19" cy="53" r="3.5" fill="#22c55e"/><circle cx="36" cy="53" r="3.5" fill="#22c55e"/><circle cx="53" cy="53" r="3.5" fill="#22c55e"/><circle cx="70" cy="53" r="3.5" fill="#22c55e"/><circle cx="87" cy="53" r="3.5" fill="#22c55e"/><circle cx="104" cy="53" r="3.5" fill="#22c55e"/><circle cx="121" cy="53" r="3.5" fill="#22c55e"/><circle cx="138" cy="53" r="3.5" fill="#22c55e"/>
+          <circle cx="19" cy="70" r="3.5" fill="#22c55e"/><circle cx="36" cy="70" r="3.5" fill="#22c55e"/><circle cx="53" cy="70" r="3.5" fill="#22c55e"/><circle cx="70" cy="70" r="3.5" fill="#22c55e"/><circle cx="87" cy="70" r="3.5" fill="#22c55e"/><circle cx="104" cy="70" r="3.5" fill="#22c55e"/><circle cx="121" cy="70" r="3.5" fill="#22c55e"/><circle cx="138" cy="70" r="3.5" fill="#22c55e"/>
+          <circle cx="19" cy="87" r="3.5" fill="#22c55e"/><circle cx="36" cy="87" r="3.5" fill="#22c55e"/><circle cx="53" cy="87" r="3.5" fill="#22c55e"/><circle cx="70" cy="87" r="3.5" fill="#22c55e"/><circle cx="87" cy="87" r="3.5" fill="#22c55e"/><circle cx="104" cy="87" r="3.5" fill="#22c55e"/><circle cx="121" cy="87" r="3.5" fill="#22c55e"/><circle cx="138" cy="87" r="3.5" fill="#22c55e"/>
+          <circle cx="19" cy="104" r="3.5" fill="#22c55e"/><circle cx="36" cy="104" r="3.5" fill="#22c55e"/><circle cx="53" cy="104" r="3.5" fill="#22c55e"/><circle cx="70" cy="104" r="3.5" fill="#22c55e"/><circle cx="87" cy="104" r="3.5" fill="#22c55e"/><circle cx="104" cy="104" r="3.5" fill="#22c55e"/><circle cx="121" cy="104" r="3.5" fill="#22c55e"/><circle cx="138" cy="104" r="3.5" fill="#22c55e"/>
+          <circle cx="19" cy="121" r="3.5" fill="#22c55e"/><circle cx="36" cy="121" r="3.5" fill="#22c55e"/><circle cx="53" cy="121" r="3.5" fill="#22c55e"/><circle cx="70" cy="121" r="3.5" fill="#22c55e"/><circle cx="87" cy="121" r="3.5" fill="#22c55e"/><circle cx="104" cy="121" r="3.5" fill="#22c55e"/><circle cx="121" cy="121" r="3.5" fill="#22c55e"/><circle cx="138" cy="121" r="3.5" fill="#22c55e"/>
+          <circle cx="19" cy="138" r="3.5" fill="#22c55e"/><circle cx="36" cy="138" r="3.5" fill="#22c55e"/><circle cx="53" cy="138" r="3.5" fill="#22c55e"/><circle cx="70" cy="138" r="3.5" fill="#22c55e"/><circle cx="87" cy="138" r="3.5" fill="#22c55e"/><circle cx="104" cy="138" r="3.5" fill="#22c55e"/><circle cx="121" cy="138" r="3.5" fill="#22c55e"/><circle cx="138" cy="138" r="3.5" fill="#22c55e"/>
+          <text x="78" y="157" fill="#94a3b8" font-size="8" text-anchor="middle" font-family="Outfit">Constelación 64-QAM (8×8)</text>
         </svg>
       </div>
     </div>
@@ -722,14 +529,10 @@
         <div class="sec-label">Baudio (Baud)</div>
         <div class="big-n">Baud</div>
         <p class="def">
-          <strong>Tasa de cambio de la señal</strong> en el medio de transmisión después
-          de la codificación y modulación. Cada pulso transmitido = 1 baudio.
-          También llamado <strong>velocidad de símbolo</strong> (símbolos/segundo).
-          Los primeros módems transmitían 1 bit/baudio → baud = bps.
+          Tasa de cambio de la señal en el medio. Cada pulso transmitido = 1 baudio.
         </p>
         <div class="fbox fbox-pk">
-          Baud = 1 / t<sub>s</sub><br/>
-          <span style="color:#64748b; font-size:0.66rem;">t<sub>s</sub> = tiempo de 1 símbolo</span>
+          Baud = 1 / t<sub>s</sub>
         </div>
       </div>
 
@@ -737,14 +540,10 @@
         <div class="sec-label">BPS — Bits Por Segundo</div>
         <div class="big-n">bps</div>
         <p class="def">
-          Medida de la cantidad de bits transmitidos por segundo.
-          <strong>Diferente al baudio</strong> cuando se transmite más de 1 bit por pulso.
-          Usando QAM se pueden "empaquetar" múltiples bits en cada baudio, 
-          incrementando el throughput sin ampliar el ancho de banda.
+          Cantidad de bits transmitidos por segundo.
         </p>
         <div class="fbox fbox-pk">
-          bps = baud × bits/baudio<br/>
-          <span style="color:#64748b; font-size:0.66rem;">Ej: 9600 = 1200 × 8 bits/baudio</span>
+          bps = baud × bits/baudio
         </div>
       </div>
 
@@ -761,35 +560,32 @@
           <tbody>
             <tr>
               <td style="color:#22d3ee; font-weight:600;">QPSK</td>
-              <td style="color:#cdd6e8; font-weight:700;">2</td>
+              <td style="color:#e2e8f0; font-weight:700;">2</td>
               <td style="color:#22d3ee; font-weight:600;">4,800 bps</td>
             </tr>
             <tr>
               <td style="color:#f97316; font-weight:600;">QAM-16</td>
-              <td style="color:#cdd6e8; font-weight:700;">4</td>
+              <td style="color:#e2e8f0; font-weight:700;">4</td>
               <td style="color:#f97316; font-weight:600;">9,600 bps</td>
             </tr>
             <tr>
               <td style="color:#22c55e; font-weight:600;">QAM-64</td>
-              <td style="color:#cdd6e8; font-weight:700;">6</td>
+              <td style="color:#e2e8f0; font-weight:700;">6</td>
               <td style="color:#22c55e; font-weight:600;">14,400 bps</td>
             </tr>
           </tbody>
         </table>
-        <p style="font-size:0.68rem; color:#3d5070; margin-top:8px; line-height:1.4;">
-          QAM es la técnica para "empaquetar" bits en baudios.<br/>
-          Ej: 3600 bps a 1200 baud → 3 bits/baudio → 8 combinaciones binarias.
-        </p>
       </div>
 
     </div>
   </div>
-<!-- ══════════════════════ 7. EJERCICIOS ══════════════════════ -->
+
+  <!-- ══════════════════════ 7. EJERCICIO ══════════════════════ -->
   <div class="card t-ej full">
     <div class="sec-label">Ejemplo</div>
     <div class="sec-title c-ej">LÍMITE DE SHANNON</div>
     
-    <p style="font-size:0.76rem; color:#8899b8; margin:10px 0; line-height:1.5;">
+    <p style="font-size:0.85rem; color:#cbd5e1; margin:10px 0; line-height:1.5;">
       Para un canal normal de comunicaciones de voz, con relación de potencias de señal a ruido de 30 dB y ancho de banda de 2.7 kHz, el límite de Shannon de capacidad de información es:
     </p>
 
@@ -798,7 +594,7 @@
         <div style="font-size:1.1rem; margin-bottom:8px;">
           I = 2700 log₂ (1 + 1000)
         </div>
-        <div style="font-size:1.3rem; color:#22d3ee; font-weight:600;">
+        <div style="font-size:1.4rem; color:#22d3ee; font-weight:700;">
           26.911 kbps
         </div>
       </div>
@@ -806,7 +602,7 @@
 
   </div>
 
-</div><!-- /infographic -->
+</div>
 
 </body>
 </html>

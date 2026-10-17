@@ -5,100 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Jedi o Sith – Holocron Galáctico</title>
   <link rel="icon" type="image/png" href="https://loodibee.com/wp-content/uploads/Star-Wars-transparent-logo-1024x1024.png">
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Crimson+Text:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 
   <style>
-    * { box-sizing: border-box; }
-
     :root {
-      --jedi:  #4fc3f7;
-      --sith:  #ef5350;
-      --gold:  #ffe81f;
-      --bg:    #05070f;
-      --card:  rgba(255,255,255,0.04);
-      --border:rgba(255,255,255,0.10);
+      --jedi: #4fc3f7;
+      --sith: #ef5350;
+      --gold: #ffe81f;
     }
 
-    body {
-      margin: 0;
-      font-family: 'Crimson Text', Georgia, serif;
-      color: #eaeaea;
-      background: var(--bg);
-      overflow-x: hidden;
-      min-height: 100vh;
-    }
-
-    /* ===== STAR BACKGROUND ===== */
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background:
-        radial-gradient(1px 1px at 10% 20%, white, transparent),
-        radial-gradient(1px 1px at 30% 80%, white, transparent),
-        radial-gradient(1px 1px at 70% 10%, white, transparent),
-        radial-gradient(1px 1px at 90% 50%, white, transparent),
-        radial-gradient(1px 1px at 50% 35%, white, transparent),
-        radial-gradient(1px 1px at 20% 60%, white, transparent),
-        radial-gradient(1px 1px at 80% 75%, white, transparent),
-        radial-gradient(1px 1px at 45% 90%, white, transparent),
-        radial-gradient(1px 1px at 65% 45%, white, transparent);
-      opacity: 0.35;
-      animation: starsMove 80s linear infinite;
-      z-index: 0;
-    }
-
-    @keyframes starsMove {
-      from { transform: translateY(0); }
-      to   { transform: translateY(-1000px); }
-    }
-
-    /* ===== HEADER ===== */
-    header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 12px 16px;
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      background: rgba(5, 7, 15, 0.95);
-      backdrop-filter: blur(6px);
-      border-bottom: 1px solid var(--border);
-    }
-    header img { width: 50px; height: auto; }
-    header h1 {
-      font-family: 'Cinzel', serif;
-      font-size: 1.1rem;
-      color: var(--gold);
-      margin: 0;
-    }
-
-    /* ===== CONTAINER ===== */
-    .container {
-      position: relative;
-      z-index: 1;
-      max-width: 700px;
-      margin: auto;
-      padding: 30px 14px 60px;
-    }
-
-    /* ===== INTRO ===== */
+    /* Quiz-specific layout enhancements */
     .intro {
       text-align: center;
       margin-bottom: 32px;
       animation: fadeDown 0.7s ease both;
     }
     .intro h2 {
-      font-family: 'Cinzel', serif;
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       color: var(--gold);
       margin-bottom: 8px;
-      letter-spacing: 2px;
     }
     .intro p {
       font-size: 1rem;
-      opacity: 0.7;
+      color: #94a3b8;
       max-width: 480px;
       margin: auto;
       line-height: 1.6;
@@ -112,197 +41,148 @@
     /* ===== PROGRESS BAR ===== */
     .progress-wrap {
       margin-bottom: 20px;
-      animation: fadeDown 0.7s 0.1s ease both;
     }
     .progress-label {
-      font-size: 0.78rem;
-      opacity: 0.5;
-      margin-bottom: 5px;
-      font-family: 'Cinzel', serif;
+      font-size: 0.8rem;
+      color: var(--gold);
+      margin-bottom: 6px;
+      font-weight: 600;
       letter-spacing: 1px;
     }
     .progress-bar {
-      height: 4px;
-      background: var(--border);
-      border-radius: 4px;
+      height: 6px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 6px;
       overflow: hidden;
     }
     .progress-fill {
       height: 100%;
-      background: var(--gold);
-      border-radius: 4px;
+      background: var(--gold-gradient);
+      border-radius: 6px;
       transition: width 0.4s ease;
       width: 0%;
+      box-shadow: 0 0 10px rgba(255,232,31,0.5);
     }
 
     /* ===== QUIZ CARD ===== */
-    .quiz-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 28px 24px;
-      backdrop-filter: blur(8px);
-      box-shadow: 0 0 40px rgba(0,0,0,0.5);
-      animation: cardIn 0.45s ease both;
-    }
-
-    @keyframes cardIn {
-      from { opacity:0; transform:scale(0.97) translateY(10px); }
-      to   { opacity:1; transform:scale(1) translateY(0); }
-    }
-
-    /* número de pregunta */
     .q-number {
-      font-family: 'Cinzel', serif;
-      font-size: 0.72rem;
+      font-size: 0.78rem;
       letter-spacing: 2px;
       color: var(--gold);
-      opacity: 0.6;
+      opacity: 0.8;
       margin-bottom: 10px;
+      font-weight: 600;
     }
 
-    /* texto pregunta */
     #question {
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       margin-bottom: 22px;
-      color: #f0f0f0;
+      color: #f1f5f9;
       line-height: 1.5;
     }
 
-    /* botones de respuesta */
     #answers {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
     }
 
     #answers button {
       width: 100%;
-      padding: 12px 16px;
-      border-radius: 9px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.05);
-      color: #eaeaea;
-      cursor: pointer;
-      transition: 0.25s ease;
-      font-family: 'Crimson Text', serif;
-      font-size: 1rem;
       text-align: left;
-    }
-    #answers button:hover {
-      border-color: var(--gold);
-      transform: translateX(4px);
-      background: rgba(255,232,31,0.07);
+      padding: 14px 18px;
     }
 
-    /* ===== BARRA LATERAL JEDI / SITH ===== */
+    /* ===== SIDE INDICATOR ===== */
     .side-indicator {
       display: flex;
       justify-content: space-between;
-      margin-top: 22px;
-      gap: 10px;
+      margin-top: 24px;
+      gap: 12px;
     }
     .side-bar {
       flex: 1;
-      padding: 10px 14px;
-      border-radius: 9px;
+      padding: 12px 14px;
+      border-radius: 12px;
       border: 1px solid transparent;
-      font-family: 'Cinzel', serif;
-      font-size: 0.78rem;
+      font-size: 0.82rem;
       letter-spacing: 1px;
       text-align: center;
       transition: 0.4s;
+      backdrop-filter: blur(8px);
     }
     .side-bar.jedi {
       border-color: rgba(79,195,247,0.3);
       color: var(--jedi);
-      background: rgba(79,195,247,0.05);
+      background: rgba(79,195,247,0.06);
     }
     .side-bar.sith {
       border-color: rgba(239,83,80,0.3);
       color: var(--sith);
-      background: rgba(239,83,80,0.05);
+      background: rgba(239,83,80,0.06);
     }
     .side-bar .bar-inner {
-      height: 3px;
-      border-radius: 3px;
-      margin-top: 6px;
+      height: 4px;
+      border-radius: 4px;
+      margin-top: 8px;
       transition: width 0.5s ease;
     }
-    .side-bar.jedi .bar-inner { background: var(--jedi); width: 0%; }
-    .side-bar.sith .bar-inner { background: var(--sith); width: 0%; }
+    .side-bar.jedi .bar-inner { background: var(--jedi); width: 0%; box-shadow: 0 0 8px var(--jedi); }
+    .side-bar.sith .bar-inner { background: var(--sith); width: 0%; box-shadow: 0 0 8px var(--sith); }
 
-    /* ===== RESULTADO ===== */
+    /* ===== RESULT ===== */
     #result-section {
       display: none;
       text-align: center;
-      animation: cardIn 0.5s ease both;
     }
 
     .result-icon {
       font-size: 4rem;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       filter: drop-shadow(0 0 20px currentColor);
     }
 
     .result-title {
-      font-family: 'Cinzel', serif;
       font-size: 2rem;
-      margin-bottom: 10px;
-      letter-spacing: 3px;
+      margin-bottom: 12px;
+      letter-spacing: 2px;
     }
     .result-title.jedi { color: var(--jedi); text-shadow: 0 0 20px rgba(79,195,247,0.5); }
     .result-title.sith { color: var(--sith); text-shadow: 0 0 20px rgba(239,83,80,0.5); }
     .result-title.neutral { color: var(--gold); text-shadow: 0 0 20px rgba(255,232,31,0.4); }
 
     .result-desc {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       line-height: 1.7;
-      opacity: 0.85;
-      max-width: 480px;
+      color: #cbd5e1;
+      max-width: 500px;
       margin: 0 auto 24px;
     }
 
     .score-display {
       display: flex;
       justify-content: center;
-      gap: 30px;
+      gap: 24px;
       margin-bottom: 28px;
     }
     .score-box {
-      padding: 10px 20px;
-      border-radius: 9px;
-      font-family: 'Cinzel', serif;
+      padding: 12px 24px;
+      border-radius: 14px;
       font-size: 0.85rem;
+      backdrop-filter: blur(8px);
     }
-    .score-box.jedi { border: 1px solid rgba(79,195,247,0.4); color: var(--jedi); }
-    .score-box.sith { border: 1px solid rgba(239,83,80,0.4); color: var(--sith); }
-    .score-box span { display: block; font-size: 1.5rem; font-weight: 700; }
-
-    #restart {
-      padding: 12px 36px;
-      border-radius: 9px;
-      border: 1px solid var(--gold);
-      background: transparent;
-      color: var(--gold);
-      cursor: pointer;
-      font-family: 'Cinzel', serif;
-      font-size: 0.9rem;
-      letter-spacing: 1px;
-      transition: 0.3s;
-    }
-    #restart:hover {
-      background: rgba(255,232,31,0.1);
-      box-shadow: 0 0 16px rgba(255,232,31,0.2);
-    }
+    .score-box.jedi { border: 1px solid rgba(79,195,247,0.4); color: var(--jedi); background: rgba(79,195,247,0.05); }
+    .score-box.sith { border: 1px solid rgba(239,83,80,0.4); color: var(--sith); background: rgba(239,83,80,0.05); }
+    .score-box span { display: block; font-size: 1.6rem; font-weight: 700; margin-top: 4px; }
 
     /* ===== LIGHTSABER OVERLAY ===== */
     #saber-overlay {
       display: none;
       position: fixed;
       inset: 0;
-      z-index: 100;
-      background: rgba(5, 7, 15, 0.92);
+      z-index: 10000;
+      background: rgba(3, 7, 18, 0.94);
+      backdrop-filter: blur(12px);
       justify-content: center;
       align-items: center;
       flex-direction: column;
@@ -319,14 +199,13 @@
       gap: 0;
     }
 
-    /* empuñadura */
     .saber-hilt {
-      width: 22px;
-      height: 90px;
-      background: linear-gradient(180deg, #aaa 0%, #666 40%, #888 60%, #555 100%);
+      width: 24px;
+      height: 95px;
+      background: linear-gradient(180deg, #ccc 0%, #777 40%, #999 60%, #444 100%);
       border-radius: 4px 4px 6px 6px;
       position: relative;
-      box-shadow: 0 0 8px rgba(0,0,0,0.8);
+      box-shadow: 0 0 12px rgba(0,0,0,0.9);
       flex-shrink: 0;
     }
     .saber-hilt::before {
@@ -334,29 +213,17 @@
       position: absolute;
       left: -8px;
       top: 18px;
-      width: 38px;
+      width: 40px;
       height: 8px;
-      background: linear-gradient(90deg, #777, #ccc, #777);
+      background: linear-gradient(90deg, #777, #eee, #777);
       border-radius: 3px;
     }
-    .saber-hilt::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: 10px;
-      height: 10px;
-      background: radial-gradient(circle, #fff 30%, rgba(255,255,255,0.2) 100%);
-      border-radius: 50%;
-    }
 
-    /* hoja del sable */
     .saber-blade {
       width: 14px;
-      height: 0px;              /* empieza en 0, crece con JS */
+      height: 0px;
       border-radius: 6px 6px 0 0;
-      order: -1;                /* encima de la empuñadura */
+      order: -1;
       transition: height 0.9s cubic-bezier(0.22, 1, 0.36, 1),
                   box-shadow 0.9s ease,
                   opacity 0.9s ease;
@@ -364,118 +231,74 @@
     }
     .saber-blade.jedi-blade {
       background: linear-gradient(to top, #a5f3a5, #00e676, #69ff88);
-      box-shadow:
-        0 0 10px #00e676,
-        0 0 30px #00e676,
-        0 0 60px rgba(0,230,118,0.5);
+      box-shadow: 0 0 10px #00e676, 0 0 30px #00e676, 0 0 60px rgba(0,230,118,0.6);
     }
     .saber-blade.sith-blade {
       background: linear-gradient(to top, #ff8a80, #f44336, #ff1744);
-      box-shadow:
-        0 0 10px #f44336,
-        0 0 30px #f44336,
-        0 0 60px rgba(244,67,54,0.5);
+      box-shadow: 0 0 10px #f44336, 0 0 30px #f44336, 0 0 60px rgba(244,67,54,0.6);
     }
     .saber-blade.neutral-blade {
       background: linear-gradient(to top, #fff9c4, #ffe81f, #fff176);
-      box-shadow:
-        0 0 10px #ffe81f,
-        0 0 30px #ffe81f,
-        0 0 60px rgba(255,232,31,0.5);
+      box-shadow: 0 0 10px #ffe81f, 0 0 30px #ffe81f, 0 0 60px rgba(255,232,31,0.6);
     }
 
-    /* texto debajo */
     .saber-label {
-      font-family: 'Cinzel', serif;
-      font-size: 1rem;
+      font-size: 1.1rem;
       letter-spacing: 3px;
       opacity: 0;
       transition: opacity 1s ease 0.8s;
-      text-align: center;
+      text-anchor: middle;
     }
     .saber-label.visible { opacity: 1; }
 
-    .saber-skip {
-      font-family: 'Cinzel', serif;
-      font-size: 0.75rem;
-      letter-spacing: 2px;
-      opacity: 0.4;
-      cursor: pointer;
-      border: 1px solid rgba(255,255,255,0.15);
-      background: transparent;
-      color: #eaeaea;
-      padding: 7px 18px;
-      border-radius: 7px;
-      transition: opacity 0.3s;
-      margin-top: 10px;
-    }
-    .saber-skip:hover { opacity: 0.8; }
-
-    /* ===== MOBILE ===== */
-    @media (max-width: 600px) {
-      header { padding: 8px 10px; gap: 8px; }
-      header h1 { font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-      header img { width: 40px; }
-      .quiz-card { padding: 20px 16px; }
-      .intro h2 { font-size: 1.3rem; }
-      .result-title { font-size: 1.5rem; }
-    }
-
-    /* ===== LANGUAGE OVERLAY ===== */
+    /* LANGUAGE OVERLAY */
     #lang-overlay {
       display: none;
       position: fixed;
       inset: 0;
-      z-index: 120;
-      background: rgba(5,7,15,0.88);
-      backdrop-filter: blur(4px);
+      z-index: 12000;
+      background: rgba(3, 7, 18, 0.90);
+      backdrop-filter: blur(12px);
       justify-content: center;
       align-items: center;
     }
-    #lang-overlay.active { display:flex; }
+    #lang-overlay.active { display: flex; }
 
     .lang-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      padding: 22px;
-      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(20px);
+      padding: 28px;
+      border-radius: 20px;
       text-align: center;
-      max-width: 420px;
+      max-width: 440px;
       width: 90%;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.7);
     }
     .lang-card h3 {
-      font-family: 'Cinzel', serif;
       color: var(--gold);
-      margin: 0 0 10px;
-      letter-spacing: 1px;
+      margin: 0 0 12px;
+      font-size: 1.3rem;
     }
-    .lang-card p { color: rgba(234,234,234,0.85); margin-bottom: 16px; }
-    .lang-options { display:flex; gap:12px; justify-content:center; }
+    .lang-card p { color: #cbd5e1; margin-bottom: 20px; }
+    .lang-options { display: flex; gap: 14px; justify-content: center; }
     .lang-btn {
       flex: 1;
-      padding: 10px 12px;
-      border-radius: 10px;
-      border: 1px solid var(--border);
-      background: rgba(255,255,255,0.04);
-      color: #eaeaea;
-      cursor: pointer;
-      font-family: 'Cinzel', serif;
-      font-size: 0.95rem;
-      transition: transform 0.18s ease, border-color 0.18s ease;
+      padding: 12px 16px;
     }
-    .lang-btn:hover { transform: translateY(-4px); border-color: var(--gold); }
   </style>
 </head>
 
 <body>
 
 <header>
-  <img src="https://loodibee.com/wp-content/uploads/Star-Wars-transparent-logo-1024x1024.png" alt="Star Wars Logo">
-  <h1>Holocron Galáctico – Quiz</h1>
+  <a href="index.html" class="logo-link">
+    <img src="https://loodibee.com/wp-content/uploads/Star-Wars-transparent-logo-1024x1024.png" alt="Star Wars Logo">
+  </a>
+  <h1 class="site-title">Holocron Galáctico – Quiz</h1>
 </header>
 
-<div class="container">
+<div class="container" style="max-width: 720px;">
 
   <div class="intro">
     <h2>¿Jedi o Sith?</h2>
@@ -524,7 +347,6 @@
 <script>
   // ============================================================
   // PREGUNTAS (ES / EN)
-  // Mantengo la misma estructura para ambos idiomas.
   // ============================================================
   const QUESTIONS_ES = [
     { question: "Un aldeano inocente está en peligro. ¿Qué haces?", answers: [ { text: "Lo protejo sin importar el costo personal.", points:2 }, { text: "Lo ayudo, pero evalúo primero el riesgo.", points:1 }, { text: "Solo actúo si me beneficia de alguna forma.", points:-1 }, { text: "Su debilidad no es mi problema.", points:-2 } ] },
@@ -552,10 +374,6 @@
     { question: "At the end of your path, how do you want to be remembered?", answers: [ { text: "As someone who protected life and hope.", points:2 }, { text: "As someone who did right when it mattered.", points:1 }, { text: "As someone who was never defeated.", points:-1 }, { text: "Fear is legacy enough.", points:-2 } ] }
   ];
 
-  // ============================================================
-  // LÓGICA DEL QUIZ
-  // Se cargará una vez el usuario elija idioma.
-  // ============================================================
   let currentQ  = 0;
   let jediScore = 0;
   let sithScore = 0;
@@ -573,11 +391,8 @@
   const quizSection   = document.getElementById('quiz-section');
   const resultSection = document.getElementById('result-section');
 
-  // language overlay elements
   const langOverlay = document.createElement('div');
   langOverlay.id = 'lang-overlay';
-  // critical display styles inline to avoid mobile cache/extension hiding
-  langOverlay.style.cssText = 'display:none;position:fixed;inset:0;z-index:99999;background:rgba(5,7,15,0.88);backdrop-filter:blur(4px);justify-content:center;align-items:center;';
   langOverlay.innerHTML = `
     <div class="lang-card">
       <h3>Selecciona idioma / Choose language</h3>
@@ -592,8 +407,6 @@
 
   const langBtnES = document.getElementById('lang-es');
   const langBtnEN = document.getElementById('lang-en');
-
-  // (LANG, QUESTIONS and total already declared above)
 
   const TRANSLATIONS = {
     es: {
@@ -611,15 +424,15 @@
       saber_label_neutral: 'EL EQUILIBRIO ERES TÚ',
       result: {
         guardian_title: 'GUARDIÁN JEDI',
-        guardian_desc: 'La Fuerza fluye en ti con claridad y propósito. Tu paciencia, compasión y desapego del poder te elevan como verdadero guardián de la galaxia. El Consejo Jedi te recibirá con los brazos abiertos.',
+        guardian_desc: 'La Fuerza fluye en ti con claridad y propósito. Tu paciencia, compasión y desapego del poder te elevan como verdadero guardián de la galaxia.',
         committed_title: 'JEDI COMPROMETIDO',
-        committed_desc: 'Caminas en la Luz, aunque la oscuridad te ronda. Tus valores son sólidos pero las tentaciones no te son ajenas. Sigue tu entrenamiento y la sombra no te alcanzará.',
+        committed_desc: 'Caminas en la Luz, aunque la oscuridad te ronda. Tus valores son sólidos pero las tentaciones no te son ajenas.',
         lord_title: 'SEÑOR SITH',
-        lord_desc: 'La oscuridad te consume y la abrazas sin reservas. Tu sed de poder y tu desprecio por la debilidad te convierten en una amenaza para toda la galaxia. La República tiembla ante tu presencia.',
+        lord_desc: 'La oscuridad te consume y la abrazas sin reservas. Tu sed de poder y tu desprecio por la debilidad te convierten en una amenaza para toda la galaxia.',
         apprentice_title: 'APRENDIZ SITH',
-        apprentice_desc: 'El lado oscuro te seduce y ya has cedido varias veces a él. Tu ambición supera tu templanza. Un Maestro Sith te encontraría un aprendiz prometedor… y peligroso.',
+        apprentice_desc: 'El lado oscuro te seduce y ya has cedido varias veces a él. Tu ambición supera tu templanza.',
         neutral_title: 'EQUILIBRIO EN LA FUERZA',
-        neutral_desc: 'Ni completamente Jedi ni completamente Sith. Eres el punto de equilibrio que las profecías predicen. Pocos logran caminar esta línea sin caer. La galaxia entera depende de tu elección final.'
+        neutral_desc: 'Ni completamente Jedi ni completamente Sith. Eres el punto de equilibrio que las profecías predicen.'
       }
     },
     en: {
@@ -637,15 +450,15 @@
       saber_label_neutral: 'BALANCE IS YOU',
       result: {
         guardian_title: 'JEDI GUARDIAN',
-        guardian_desc: 'The Force flows through you with clarity and purpose. Your patience, compassion and lack of lust for power mark you as a true guardian of the galaxy. The Jedi Council would welcome you.',
+        guardian_desc: 'The Force flows through you with clarity and purpose. Your patience, compassion and lack of lust for power mark you as a true guardian of the galaxy.',
         committed_title: 'COMMITTED JEDI',
-        committed_desc: 'You walk in the Light, though darkness tempts you. Your values are strong but temptations reach you. Continue your training and the shadow will not catch you.',
+        committed_desc: 'You walk in the Light, though darkness tempts you. Your values are strong but temptations reach you.',
         lord_title: 'SITH LORD',
-        lord_desc: 'Darkness consumes you and you embrace it without reservation. Your thirst for power and contempt for weakness make you a threat to the galaxy. The Republic trembles at your presence.',
+        lord_desc: 'Darkness consumes you and you embrace it without reservation. Your thirst for power makes you a threat to the galaxy.',
         apprentice_title: 'SITH APPRENTICE',
-        apprentice_desc: 'The dark side seduces you and you have given into it several times. Your ambition outweighs your temperance. A Sith Master would find a promising… and dangerous apprentice in you.',
+        apprentice_desc: 'The dark side seduces you and you have given into it several times.',
         neutral_title: 'BALANCE IN THE FORCE',
-        neutral_desc: 'Neither fully Jedi nor fully Sith. You are the point of balance the prophecies speak of. Few walk this line without falling. The whole galaxy depends on your final choice.'
+        neutral_desc: 'Neither fully Jedi nor fully Sith. You are the point of balance the prophecies speak of.'
       }
     }
   };
@@ -660,23 +473,20 @@
     document.querySelector('.intro p').textContent = TRANSLATIONS[lang].introDesc;
     document.getElementById('restart').textContent = TRANSLATIONS[lang].restart;
     document.getElementById('saber-skip').textContent = TRANSLATIONS[lang].saberSkip;
-    // side labels
+
     document.querySelector('.side-bar.jedi').childNodes[0].nodeValue = TRANSLATIONS[lang].jediLabel + '\n';
     document.querySelector('.side-bar.sith').childNodes[0].nodeValue = TRANSLATIONS[lang].sithLabel + '\n';
 
-    // reload first question in selected language
     currentQ = 0;
     jediScore = 0;
     sithScore = 0;
     jediBar.style.width = '0%';
     sithBar.style.width = '0%';
-    // hide result if visible
     resultSection.style.display = 'none';
     quizSection.style.display = 'block';
     loadQuestion();
   }
 
-  // show overlay on load
   function showLangOverlay() {
     langOverlay.classList.add('active');
     langOverlay.style.display = 'flex';
@@ -723,17 +533,16 @@
   }
 
   function selectAnswer(points, btn) {
-    // deshabilitar todos los botones
     answersEl.querySelectorAll('button').forEach(b => b.disabled = true);
 
     if (points > 0) {
       jediScore += points;
       btn.style.borderColor = 'var(--jedi)';
-      btn.style.background  = 'rgba(79,195,247,0.12)';
+      btn.style.background  = 'rgba(79,195,247,0.18)';
     } else {
       sithScore += Math.abs(points);
       btn.style.borderColor = 'var(--sith)';
-      btn.style.background  = 'rgba(239,83,80,0.12)';
+      btn.style.background  = 'rgba(239,83,80,0.18)';
     }
 
     updateBars();
@@ -755,7 +564,6 @@
     const audio   = document.getElementById('saber-audio');
     const skip    = document.getElementById('saber-skip');
 
-    // configurar según lado
     blade.className = 'saber-blade';
     if (side === 'jedi') {
       blade.classList.add('jedi-blade');
@@ -773,22 +581,18 @@
 
     overlay.classList.add('active');
 
-    // reproducir sonido
     audio.currentTime = 0;
     audio.play().catch(() => {});
 
-    // activar hoja con delay pequeño
     setTimeout(() => {
       blade.style.height  = '280px';
       blade.style.opacity = '1';
     }, 120);
 
-    // mostrar texto
     setTimeout(() => {
       label.classList.add('visible');
     }, 300);
 
-    // cerrar overlay
     function closeSaber() {
       overlay.classList.remove('active');
       blade.style.height  = '0px';
@@ -797,7 +601,6 @@
       onDone();
     }
 
-    // auto-cerrar a los 3.5s
     const autoClose = setTimeout(closeSaber, 3500);
 
     skip.onclick = () => {
@@ -815,7 +618,6 @@
     if (diff > 1)  side = 'jedi';
     if (diff < -1) side = 'sith';
 
-    // primero la animación, luego el resultado
     showSaberAnimation(side, () => {
       resultSection.style.display = 'block';
 
@@ -866,7 +668,6 @@
     loadQuestion();
   });
 
-  // Iniciar: mostrar overlay después de cargar para evitar problemas de caché/extensiones en móvil
   window.addEventListener('load', showLangOverlay);
 </script>
 

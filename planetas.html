@@ -3,104 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="styles.css">
   <title>Planetas - Holocron Galáctico</title>
-
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: radial-gradient(circle at top, #0b0f1a, #000);
-      color: white;
-    }
-
-    /* HEADER */
-    header {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      padding: 12px 20px;
-      border-bottom: 1px solid #333;
-      background: #05070f;
-      position: sticky;
-      top: 0;
-    }
-
-    header img {
-      width: 70px;
-      height: auto;
-      background: transparent;
-    }
-
-    header h1 {
-      font-size: 22px;
-      color: #ffe81f;
-      margin: 0;
-    }
-
-    /* CONTENEDOR */
-    .container {
-      max-width: 1000px;
-      margin: auto;
-      padding: 20px;
-    }
-
-    /* CARD PLANETA */
-    .planet {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 10px;
-      padding: 20px;
-      margin-bottom: 25px;
-    }
-
-    .planet h2 {
-      color: #ffe81f;
-      margin-top: 0;
-    }
-
-    .tag {
-      color: #aaa;
-      font-size: 13px;
-    }
-
-    /* GIF CUADRADO PRO */
-    .gif-box {
-      width: 220px;
-      height: 220px;
-      margin: 15px auto;
-      border: 2px dashed #444;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(0,0,0,0.3);
-      overflow: hidden;
-    }
-
-    .gif-box img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    /* EFECTO OPCIONAL */
-    .gif-box:hover {
-      transform: scale(1.05);
-      transition: 0.3s ease;
-      border-color: #ffe81f;
-    }
-
-  </style>
+  <link rel="icon" type="image/png" href="https://loodibee.com/wp-content/uploads/Star-Wars-transparent-logo-1024x1024.png">
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
 <!-- HEADER -->
 <header>
-  <a href="index.html">
+  <a href="index.html" class="logo-link">
     <img src="https://loodibee.com/wp-content/uploads/Star-Wars-transparent-logo-1024x1024.png" alt="Inicio">
   </a>
-  <h1>Planetas del Holocron</h1>
+  <h1 class="site-title">Planetas del Holocron</h1>
 </header>
 
 <div class="container">
@@ -108,10 +23,10 @@
   <!-- CORUSCANT -->
   <div class="planet">
     <h2>🌆 Coruscant</h2>
-    <p class="tag">Capital de la galaxia</p>
+    <span class="tag">Capital de la galaxia</span>
 
     <p>
-      Coruscant es el centro político de la galaxia, completamente urbanizado y sede del Senado Galáctico.
+      Coruscant es el centro político de la galaxia, completamente urbanizado y sede del Senado Galáctico y del Templo Jedi.
     </p>
 
     <ul>
@@ -129,15 +44,15 @@
   <!-- TATOOINE -->
   <div class="planet">
     <h2>🌵 Tatooine</h2>
-    <p class="tag">Mundo desértico</p>
+    <span class="tag">Mundo desértico</span>
 
     <p>
-      Planeta del Borde Exterior, famoso por su clima extremo y ser hogar de Anakin y Luke Skywalker.
+      Planeta del Borde Exterior, famoso por su clima extremo, sus dos soles y por ser el hogar de Anakin y Luke Skywalker.
     </p>
 
     <ul>
       <li>Doble sol</li>
-      <li>Contrabandistas</li>
+      <li>Contrabandistas y cazadores</li>
       <li>Origen de los Skywalker</li>
     </ul>
 
@@ -150,10 +65,10 @@
   <!-- NABOO -->
   <div class="planet">
     <h2>🌊 Naboo</h2>
-    <p class="tag">Planeta pacífico</p>
+    <span class="tag">Planeta pacífico</span>
 
     <p>
-      Mundo elegante y natural, hogar de la Reina Amidala y clave en la política de la República.
+      Mundo elegante y natural, hogar de la Reina Amidala y clave en la política y diplomacia de la República.
     </p>
 
     <ul>
